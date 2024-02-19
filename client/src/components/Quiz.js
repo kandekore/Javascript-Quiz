@@ -386,11 +386,15 @@ function shuffleQuestions(questions) {
     const [score, setScore] = useState(0);
     const [isQuizStarted, setIsQuizStarted] = useState(false);
     const [username, setUserName] = useState('');
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
+    const [reviewMode, setReviewMode] = useState(false); // New state to track review mode
+
 
     const endQuiz = useCallback(() => {
         setIsQuizStarted(false);
         alert("Time is up! Let's see how you did.");
         onQuizComplete(score);
+        setReviewMode(true); 
       }, [score, setIsQuizStarted, onQuizComplete]); 
   
     useEffect(() => {
@@ -406,6 +410,8 @@ function shuffleQuestions(questions) {
       }, [timeLeft, isQuizStarted, endQuiz]); 
   
     const startQuiz = () => {
+        localStorage.removeItem('quizAnswers');
+        setSelectedAnswers([]);
       setQuestions(shuffleQuestions(initialQuestions)); 
       setCurrentQuestionIndex(0);
       setTimeLeft(60);
@@ -421,23 +427,39 @@ function shuffleQuestions(questions) {
     //   }, [score, onQuizComplete]); 
 
     const handleAnswer = (answer) => {
-      if (!isQuizStarted || timeLeft <= 0) return;
-  
-      if (answer.correct) {
-        setScore(score + 1);
-      } else {
-        setTimeLeft(timeLeft >= 10 ? timeLeft - 10 : 0);
-      }
-  
-      const nextIndex = currentQuestionIndex + 1;
-      if (nextIndex < questions.length) {
-        setCurrentQuestionIndex(nextIndex);
-      } else {
-        endQuiz();
-      }
+        if (!isQuizStarted || timeLeft <= 0) return;
+    
+        // Access the current question using currentQuestionIndex
+        const currentQuestion = questions[currentQuestionIndex];
+    
+        setSelectedAnswers(prevAnswers => [
+            ...prevAnswers,
+            { 
+                question: currentQuestion.question, // Use currentQuestion here
+                selectedAnswer: answer.text, 
+                correct: answer.correct,
+                allAnswers: currentQuestion.answers // And here
+            }
+        ]);
+    
+        if (answer.correct) {
+            setScore(score + 1);
+        } else {
+            setTimeLeft(timeLeft >= 10 ? timeLeft - 10 : 0);
+        }
+    
+        const nextIndex = currentQuestionIndex + 1;
+        if (nextIndex < questions.length) {
+            setCurrentQuestionIndex(nextIndex);
+        } else {
+            endQuiz();
+        }
     };
-
- 
+    
+    useEffect(() => {
+        localStorage.setItem('quizAnswers', JSON.stringify(selectedAnswers));
+    }, [selectedAnswers]);
+    
 
 
   
@@ -483,9 +505,32 @@ const saveScore = async () => {
             </div>
           </div>
         </>
-      ) : (
+      ) : reviewMode ? (
+        <div>
+          <h2>Your Score: {score}</h2>
+          <h3>Review your answers</h3>
+          <ul>
+            {selectedAnswers.map((item, index) => (
+              <li key={index}>
+                <p>Question: {item.question}</p>
+                <p>Your Answer: {item.selectedAnswer} {item.correct ? '✅' : '❌'}</p>
+                {/* Display the correct answer if the user's answer was incorrect */}
+                {!item.correct && (
+                  <p style={{color: 'green'}}>
+                    Correct Answer: {
+                      // Find the correct answer from allAnswers
+                      item.allAnswers.find(answer => answer.correct).text
+                    }
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+          <button onClick={startQuiz} className="btn">Restart Quiz</button>
+        </div>
+      ) :  (
         <button onClick={startQuiz} className="btn start-btn">Start Quiz</button>
-      )}
+      ) }
      {!isQuizStarted && timeLeft === 0 && (
 <div className="score-grid">
   <h3>Your Score: {score} </h3>

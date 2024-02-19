@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 
 function HighScores() {
     const [highScores, setHighScores] = useState([]);
-    const navigate = useNavigate(); // Create navigate function
+    const navigate = useNavigate(); 
 
     useEffect(() => {
-        // Fetch high scores from the backend
+   
         const fetchHighScores = async () => {
             try {
                 const response = await fetch('http://localhost:4000/api/scores/highscores');
@@ -24,9 +24,9 @@ function HighScores() {
         fetchHighScores();
     }, []);
 
-    // Function to handle clicking the restart quiz button
+ 
     const handleRestartQuiz = () => {
-        navigate('/'); // Adjust the path as per your routing setup
+        navigate('/'); 
     };
 
     return (
@@ -41,7 +41,7 @@ function HighScores() {
             ) : (
                 <p>No high scores available.</p>
             )}
-            <button onClick={handleRestartQuiz}>Restart Quiz</button> {/* Add Restart Quiz Button */}
+            <button onClick={handleRestartQuiz}>Restart Quiz</button> 
         </div>
     );
 }

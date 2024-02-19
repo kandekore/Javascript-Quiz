@@ -2,370 +2,209 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import './css/Quiz.css';
 
-const initialQuestions = [
+const initialQuestions =[
     {
-      question: "What is the correct syntax for referring to an external script called 'xxx.js'?",
-      answers: [
-        { text: "<script name='xxx.js'>", correct: false },
-        { text: "<script src='xxx.js'>", correct: true },
-        { text: "<script href='xxx.js'>", correct: false },
-        { text: "<script link='xxx.js'>", correct: false },
+      "question": "What does the `document.getElementById` function do?",
+      "answers": [
+        {"text": "Retrieves an HTML element by its ID", "correct": true},
+        {"text": "Updates an HTML element's ID", "correct": false},
+        {"text": "Deletes an HTML element by its ID", "correct": false},
+        {"text": "Creates a new HTML element with an ID", "correct": false}
       ],
+      "explanation": "`document.getElementById` is a method used to access and manipulate the DOM of a webpage. It allows JavaScript to get a reference to an HTML element by its unique ID, enabling the script to read or modify the element's properties or content."
     },
     {
-      question: "How do you write 'Hello World' in an alert box?",
-      answers: [
-        { text: "msgBox('Hello World');", correct: false },
-        { text: "alertBox('Hello World');", correct: false },
-        { text: "msg('Hello World');", correct: false },
-        { text: "alert('Hello World');", correct: true },
+      "question": "What is the purpose of the `Array.map()` method in JavaScript?",
+      "answers": [
+        {"text": "To execute a function on each item in an array and collect the results", "correct": true},
+        {"text": "To filter items out of an array", "correct": false},
+        {"text": "To reduce an array to a single value", "correct": false},
+        {"text": "To check if any items in an array pass a test", "correct": false}
       ],
+      "explanation": "The `Array.map()` method creates a new array populated with the results of calling a provided function on every element in the calling array. It's useful for transforming data without mutating the original array."
     },
     {
-      question: "How do you create a function in JavaScript?",
-      answers: [
-        { text: "function:myFunction()", correct: false },
-        { text: "function myFunction()", correct: true },
-        { text: "function = myFunction()", correct: false },
-        { text: "function => myFunction()", correct: false },
+      "question": "What does the `===` operator check for?",
+      "answers": [
+        {"text": "If two values are equal", "correct": false},
+        {"text": "If two values are equal in value and type", "correct": true},
+        {"text": "If two values are not equal", "correct": false},
+        {"text": "If two values are equal in type only", "correct": false}
       ],
+      "explanation": "The `===` operator is a strict equality comparison operator in JavaScript, which checks whether its two operands are equal in both value and type, without performing type conversion."
     },
     {
-      question: "How do you call a function named 'myFunction'?",
-      answers: [
-        { text: "call myFunction()", correct: false },
-        { text: "call function myFunction()", correct: false },
-        { text: "myFunction()", correct: true },
-        { text: "function myFunction()", correct: false },
+      "question": "How can you stop the execution of a setInterval function?",
+      "answers": [
+        {"text": "clearInterval(intervalID)", "correct": true},
+        {"text": "clearInterval()", "correct": false},
+        {"text": "stopInterval(intervalID)", "correct": false},
+        {"text": "stopInterval()", "correct": false}
       ],
+      "explanation": "`clearInterval(intervalID)` is used to stop a timer set with the `setInterval()` method. `intervalID` is the identifier of the interval to be cleared, which is returned by `setInterval()`."
     },
     {
-      question: "How to write an IF statement in JavaScript?",
-      answers: [
-        { text: "if i = 5", correct: false },
-        { text: "if i == 5 then", correct: false },
-        { text: "if (i == 5)", correct: true },
-        { text: "if i = 5 then", correct: false },
+      "question": "What does the `JSON.parse()` method do?",
+      "answers": [
+        {"text": "Converts a JavaScript object into a JSON string", "correct": false},
+        {"text": "Parses a JSON string, constructing the JavaScript value or object described by the string", "correct": true},
+        {"text": "Encodes special JSON characters in a string", "correct": false},
+        {"text": "None of the above", "correct": false}
       ],
+      "explanation": "`JSON.parse()` method parses a JSON string, constructing the JavaScript value or object described by the string. This is commonly used to convert data received from a web server into a usable JavaScript object."
     },
     {
-      question: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?",
-      answers: [
-        { text: "if (i <> 5)", correct: false },
-        { text: "if i =! 5 then", correct: false },
-        { text: "if (i != 5)", correct: true },
-        { text: "if i not = 5", correct: false },
+      "question": "Which of the following is not a valid way to declare a variable in JavaScript?",
+      "answers": [
+        {"text": "var name = \"John\";", "correct": false},
+        {"text": "let name = \"John\";", "correct": false},
+        {"text": "const name = \"John\";", "correct": false},
+        {"text": "variable name = \"John\";", "correct": true}
       ],
+      "explanation": "`var`, `let`, and `const` are the only valid keywords to declare variables in JavaScript. The `variable` keyword does not exist in JavaScript syntax."
     },
     {
-      question: "How does a WHILE loop start?",
-      answers: [
-        { text: "while i = 1 to 10", correct: false },
-        { text: "while (i <= 10; i++)", correct: false },
-        { text: "while (i <= 10)", correct: true },
-        { text: "while i < 10", correct: false },
+      "question": "How do you create a class in JavaScript?",
+      "answers": [
+        {"text": "class MyClass {}", "correct": true},
+        {"text": "create MyClass {}", "correct": false},
+        {"text": "function MyClass() {}", "correct": false},
+        {"text": "new Class(MyClass);", "correct": false}
       ],
+      "explanation": "Classes in JavaScript are a template for creating objects. They encapsulate data with code to work on that data. Classes use the `class` keyword followed by the class name and curly braces `{}` to define the body."
     },
     {
-      question: "How does a FOR loop start?",
-      answers: [
-        { text: "for (i = 0; i <= 5)", correct: false },
-        { text: "for (i <= 5; i++)", correct: false },
-        { text: "for (i = 0; i <= 5; i++)", correct: true },
-        { text: "for i = 1 to 5", correct: false },
+      "question": "What is the use of the `async` keyword in JavaScript?",
+      "answers": [
+        {"text": "Makes a function return a promise", "correct": false},
+        {"text": "Allows a function to await a Promise", "correct": false},
+        {"text": "Both A and B", "correct": true},
+        {"text": "Pauses the execution of synchronous JavaScript code", "correct": false}
       ],
+      "explanation": "The `async` keyword is used before a function to indicate that the function always returns a promise. Functions marked with `async` can also use the `await` keyword to pause the execution until the promise is resolved."
     },
     {
-      question: "How can you add a comment in a JavaScript?",
-      answers: [
-        { text: "'This is a comment", correct: false },
-        { text: "//This is a comment", correct: true },
-        { text: "<!--This is a comment-->", correct: false },
-        { text: "/*This is a comment*/", correct: false },
+      "question": "What is event bubbling in JavaScript?",
+      "answers": [
+        {"text": "Directly handling an event on the element it occurred", "correct": false},
+        {"text": "The event gets handled by the innermost element first and then propagated to outer elements", "correct": false},
+        {"text": "The event is directly captured by the outermost element and propagated to the inner elements", "correct": false},
+        {"text": "The event starts from the outermost element and is propagated to the innermost element", "correct": true}
       ],
+      "explanation": "Event bubbling is a method of event propagation in the DOM where events start from the deepest element (innermost) and then propagate to the outer elements. This is the default behavior of events in most browsers."
     },
     {
-      question: "What is the correct way to write a JavaScript array?",
-      answers: [
-        { text: "var colors = 'red', 'green', 'blue'", correct: false },
-        { text: "var colors = ['red', 'green', 'blue']", correct: true },
-        { text: "var colors = (1:'red', 2:'green', 3:'blue')", correct: false },
-        { text: "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')", correct: false },
-      ]
+      "question": "What will the following code output? `console.log(\"5\" + 3);`",
+      "answers": [
+        {"text": "8", "correct": false},
+        {"text": "53", "correct": true},
+        {"text": "\"53\"", "correct": false},
+        {"text": "TypeError", "correct": false}
+      ],
+      "explanation": "In JavaScript, the `+` operator is used for both addition and concatenation. If one of the operands is a string, JavaScript will treat the operation as concatenation, converting the other operand to a string if necessary."
     },
-      {
-        question: "Which object in JavaScript can be used to ensure code runs after a specified time?",
-        answers: [
-          { text: "setTimeout", correct: true },
-          { text: "timeWait", correct: false },
-          { text: "delay", correct: false },
-          { text: "interval", correct: false },
-        ],
-      },
-      {
-        question: "What keyword is used to declare an asynchronous function in JavaScript?",
-        answers: [
-          { text: "async", correct: true },
-          { text: "await", correct: false },
-          { text: "defer", correct: false },
-          { text: "promise", correct: false },
-        ],
-      },
-      {
-        question: "Which method is used to serialize an object into a JSON string in JavaScript?",
-        answers: [
-          { text: "JSON.stringify()", correct: true },
-          { text: "JSON.parse()", correct: false },
-          { text: "JSON.serialize()", correct: false },
-          { text: "Object.toString()", correct: false },
-        ],
-      },
-      {
-        question: "How do you find the minimum of two numbers using JavaScript?",
-        answers: [
-          { text: "min(a,b)", correct: false },
-          { text: "Math.min(a,b)", correct: true },
-          { text: "Math.minimum(a,b)", correct: false },
-          { text: "Math.minimize(a,b)", correct: false },
-        ],
-      },
-      {
-        question: "Which statement creates a new object using the 'Person' constructor?",
-        answers: [
-          { text: "var person = new Person()", correct: true },
-          { text: "var person = Person()", correct: false },
-          { text: "var person = construct Person()", correct: false },
-          { text: "var person = create Person()", correct: false },
-        ],
-      },
-      {
-        question: "Which operator is used to check both the value and type of a variable?",
-        answers: [
-          { text: "==", correct: false },
-          { text: "===", correct: true },
-          { text: "=", correct: false },
-          { text: "!==", correct: false },
-        ],
-      },
-      {
-        question: "What will 'console.log(typeof [])' output?",
-        answers: [
-          { text: "'object'", correct: true },
-          { text: "'array'", correct: false },
-          { text: "'list'", correct: false },
-          { text: "'undefined'", correct: false },
-        ],
-      },
-      {
-        question: "Which method removes the last element from an array and returns that element?",
-        answers: [
-          { text: "pop()", correct: true },
-          { text: "push()", correct: false },
-          { text: "last()", correct: false },
-          { text: "remove()", correct: false },
-        ],
-      },
-      {
-        question: "How can you detect the client's browser name in JavaScript?",
-        answers: [
-          { text: "navigator.appName", correct: true },
-          { text: "browser.name", correct: false },
-          { text: "client.navName", correct: false },
-          { text: "window.browser", correct: false },
-        ],
-      },
-      {
-        question: "What will 'console.log(1 + '2' + '2')' output?",
-        answers: [
-          { text: "'5'", correct: false },
-          { text: "'122'", correct: true },
-          { text: "'32'", correct: false },
-          { text: "NaN", correct: false },
-        ],
-      },
-      {
-        question: "Which method can be used to replace parts of a string?",
-        answers: [
-          { text: "string.replace(oldPart, newPart)", correct: true },
-          { text: "string.exchange(oldPart, newPart)", correct: false },
-          { text: "string.swap(oldPart, newPart)", correct: false },
-          { text: "string.change(oldPart, newPart)", correct: false },
-        ],
-      },
-      {
-        question: "How do you declare a JavaScript variable?",
-        answers: [
-          { text: "v name;", correct: false },
-          { text: "variable name;", correct: false },
-          { text: "var name;", correct: true },
-          { text: "let name;", correct: false },
-        ],
-      },
-      {
-        question: "Which event occurs when the user clicks on an HTML element?",
-        answers: [
-          { text: "onchange", correct: false },
-          { text: "onclick", correct: true },
-          { text: "onmouseover", correct: false },
-          { text: "onmouseclick", correct: false },
-        ],
-      },
-      {
-        question: "How do you declare a constant in JavaScript?",
-        answers: [
-          { text: "const name;", correct: true },
-          { text: "constant name;", correct: false },
-          { text: "let name;", correct: false },
-          { text: "var name;", correct: false },
-        ],
-      },
-      {
-        question: "How do you round the number 7.25, to the nearest integer?",
-        answers: [
-          { text: "Math.rnd(7.25)", correct: false },
-          { text: "Math.round(7.25)", correct: true },
-          { text: "round(7.25)", correct: false },
-          { text: "Math.floor(7.25)", correct: false },
-        ],
-      },
-      {
-        question: "How do you find the number with the highest value of x and y?",
-        answers: [
-          { text: "Math.ceil(x, y)", correct: false },
-          { text: "Math.max(x, y)", correct: true },
-          { text: "top(x, y)", correct: false },
-          { text: "Math.high(x, y)", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct JavaScript syntax to change the content of the HTML element below?\n<p id='demo'>This is a demonstration.</p>",
-        answers: [
-          { text: "document.getElementByName('p').innerHTML = 'Hello World!';", correct: false },
-          { text: "document.getElementById('demo').innerHTML = 'Hello World!';", correct: true },
-          { text: "#demo.innerHTML = 'Hello World!';", correct: false },
-          { text: "document.getElement('p').innerHTML = 'Hello World!';", correct: false },
-        ],
-      },
-      {
-        question: "Where is the correct place to insert a JavaScript?",
-        answers: [
-          { text: "The <body> section", correct: false },
-          { text: "Both the <head> section and the <body> section are correct", correct: true },
-          { text: "The <head> section", correct: false },
-          { text: "At the end of the document", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct syntax for referring to an external script called 'xxx.js'?",
-        answers: [
-          { text: "<script href='xxx.js'>", correct: false },
-          { text: "<script name='xxx.js'>", correct: false },
-          { text: "<script src='xxx.js'>", correct: true },
-          { text: "<script file='xxx.js'>", correct: false },
-        ],
-      },
-      {
-        question: "The external JavaScript file must contain the <script> tag.",
-        answers: [
-          { text: "True", correct: false },
-          { text: "False", correct: true },
-          { text: "Depends on the document type", correct: false },
-          { text: "Only if the file is local", correct: false },
-        ],
-      },
-      {
-        question: "How do you write a conditional statement for executing some statements only if 'i' is NOT equal to 5?",
-        answers: [
-          { text: "if (i != 5)", correct: true },
-          { text: "if i =! 5 then", correct: false },
-          { text: "if i <> 5", correct: false },
-          { text: "if (i <> 5)", correct: false },
-        ],
-      },
-      {
-        question: "How does a 'for' loop start?",
-        answers: [
-          { text: "for (i <= 5; i++)", correct: false },
-          { text: "for (i = 0; i <= 5)", correct: false },
-          { text: "for (i = 0; i <= 5; i++)", correct: true },
-          { text: "for i = 1 to 5", correct: false },
-        ],
-      },
-      {
-        question: "How can you make a numbered list?",
-        answers: [
-          { text: "<ul>", correct: false },
-          { text: "<ol>", correct: true },
-          { text: "<list>", correct: false },
-          { text: "<dl>", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct HTML for making a text input field?",
-        answers: [
-          { text: "<input type='textfield'>", correct: false },
-          { text: "<input type='text'>", correct: true },
-          { text: "<textfield>", correct: false },
-          { text: "<textinput type='text'>", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct HTML for making a drop-down list?",
-        answers: [
-          { text: "<list>", correct: false },
-          { text: "<input type='dropdown'>", correct: false },
-          { text: "<select>", correct: true },
-          { text: "<dropdown>", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct HTML for making a checkbox?",
-        answers: [
-          { text: "<checkbox>", correct: false },
-          { text: "<input type='checkbox'>", correct: true },
-          { text: "<check>", correct: false },
-          { text: "<input type='check'>", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct HTML for making a text area?",
-        answers: [
-          { text: "<input type='textarea'>", correct: false },
-          { text: "<textarea>", correct: true },
-          { text: "<textbox>", correct: false },
-          { text: "<input type='textbox'>", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct HTML for inserting an image?",
-        answers: [
-          { text: "<img src='image.gif' alt='MyImage'>", correct: true },
-          { text: "<image src='image.gif' alt='MyImage'>", correct: false },
-          { text: "<img href='image.gif' alt='MyImage'>", correct: false },
-          { text: "<img alt='MyImage'>image.gif</img>", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct HTML for inserting a background image?",
-        answers: [
-          { text: "<body bg='background.gif'>", correct: false },
-          { text: "<body style='background-image:url(background.gif)'>", correct: true },
-          { text: "<background img='background.gif'>", correct: false },
-          { text: "<body background='background.gif'>", correct: false },
-        ],
-      },
-      {
-        question: "What is the correct HTML for creating a hyperlink?",
-        answers: [
-          { text: "<a href='url'>link text</a>", correct: true },
-          { text: "<a>url</a>link text", correct: false },
-          { text: "<a url='link text'>", correct: false },
-          { text: "<link>url</link>link text", correct: false },
-        ],
-      }
-      
-      
-    ]
+    {
+      "question": "How do you copy an object in JavaScript?",
+      "answers": [
+        {"text": "Object.copy(obj)", "correct": false},
+        {"text": "var copy = Object.assign({}, obj);", "correct": true},
+        {"text": "var copy = copyObject(obj);", "correct": false},
+        {"text": "var copy = obj.copy();", "correct": false}
+      ],
+      "explanation": "`Object.assign(target, ...sources)` method is used to copy all enumerable own properties from one or more source objects to a target object. It returns the target object."
+    },
+    {
+      "question": "Which method can be used to check if an array includes a certain value?",
+      "answers": [
+        {"text": "array.contains(value)", "correct": false},
+        {"text": "array.includes(value)", "correct": true},
+        {"text": "array.has(value)", "correct": false},
+        {"text": "array.find(value)", "correct": false}
+      ],
+      "explanation": "The `array.includes()` method determines whether an array includes a certain value among its entries, returning `true` or `false` as appropriate."
+    },
+    {
+      "question": "What is a Promise in JavaScript?",
+      "answers": [
+        {"text": "A function that awaits a result", "correct": false},
+        {"text": "An object representing the eventual completion or failure of an asynchronous operation", "correct": true},
+        {"text": "A data type specifically used for mathematical calculations", "correct": false},
+        {"text": "A callback function for asynchronous operations", "correct": false}
+      ],
+      "explanation": "A Promise is an object representing the eventual completion or failure of an asynchronous operation. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason."
+    },
+    {
+      "question": "What does the `typeof` operator return for a function in JavaScript?",
+      "answers": [
+        {"text": "\"function\"", "correct": true},
+        {"text": "\"object\"", "correct": false},
+        {"text": "\"method\"", "correct": false},
+        {"text": "\"callable\"", "correct": false}
+      ],
+      "explanation": "The `typeof` operator in JavaScript returns a string indicating the type of the unevaluated operand. For functions, it returns `\"function\"`."
+    },
+    {
+      "question": "How do you add an element at the beginning of an array in JavaScript?",
+      "answers": [
+        {"text": "array.push(element)", "correct": false},
+        {"text": "array.unshift(element)", "correct": true},
+        {"text": "array.addFirst(element)", "correct": false},
+        {"text": "array.prepend(element)", "correct": false}
+      ],
+      "explanation": "The `array.unshift()` method adds one or more elements to the beginning of an array and returns the new length of the array."
+    },
+    {
+      "question": "What does the `fetch` function in JavaScript do?",
+      "answers": [
+        {"text": "Synchronously sends data to a server", "correct": false},
+        {"text": "Asynchronously retrieves data from a server", "correct": true},
+        {"text": "Deletes data from a server", "correct": false},
+        {"text": "Updates data on a server", "correct": false}
+      ],
+      "explanation": "The `fetch` function provides an easy, logical way to fetch resources asynchronously across the network. It returns a Promise that resolves to the Response to that request, whether it is successful or not."
+    },
+    {
+      "question": "How do you remove a specific element from an array in JavaScript?",
+      "answers": [
+        {"text": "array.splice(index, 1)", "correct": true},
+        {"text": "array.remove(element)", "correct": false},
+        {"text": "array.delete(index)", "correct": false},
+        {"text": "array.cut(index)", "correct": false}
+      ],
+      "explanation": "The `array.splice()` method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. To remove a specific element, you specify the index of the element and delete count as 1."
+    },
+    {
+      "question": "What is the output of `console.log(1 + '2' + 3)`?",
+      "answers": [
+        {"text": "\"123\"", "correct": true},
+        {"text": "\"6\"", "correct": false},
+        {"text": "\"15\"", "correct": false},
+        {"text": "TypeError", "correct": false}
+      ],
+      "explanation": "JavaScript performs concatenation when one of the operands is a string. Thus, 1 is concatenated with '2' as \"12\", and then \"12\" is concatenated with 3, resulting in \"123\"."
+    },
+    {
+      "question": "What keyword is used to define a block of code that will be executed if an error occurs in a try block?",
+      "answers": [
+        {"text": "catch", "correct": true},
+        {"text": "error", "correct": false},
+        {"text": "finally", "correct": false},
+        {"text": "except", "correct": false}
+      ],
+      "explanation": "The `catch` keyword is used in try-catch statements in JavaScript to define a block of code that will be executed if an error occurs in the try block."
+    },
+    {
+      "question": "What is the purpose of the `finally` block in a try-catch statement?",
+      "answers": [
+        {"text": "To execute code after the try and catch blocks, regardless of the result", "correct": true},
+        {"text": "To handle the error specifically after the catch block", "correct": false},
+        {"text": "To finalize the try block execution before the catch block", "correct": false},
+        {"text": "To rethrow an error caught in the catch block", "correct": false}
+      ],
+      "explanation": "The `finally` block executes after the try and catch blocks but before any subsequent code. It executes regardless of whether an exception was thrown or caught, allowing for cleanup code to be run."
+    }
+  ]
+  
 
 
 function shuffleQuestions(questions) {
@@ -429,16 +268,18 @@ function shuffleQuestions(questions) {
     const handleAnswer = (answer) => {
         if (!isQuizStarted || timeLeft <= 0) return;
     
-        // Access the current question using currentQuestionIndex
+       
         const currentQuestion = questions[currentQuestionIndex];
+        const explanation = currentQuestion.explanation;
     
         setSelectedAnswers(prevAnswers => [
             ...prevAnswers,
             { 
-                question: currentQuestion.question, // Use currentQuestion here
-                selectedAnswer: answer.text, 
-                correct: answer.correct,
-                allAnswers: currentQuestion.answers // And here
+                question: currentQuestion.question,
+            selectedAnswer: answer.text,
+            correct: answer.correct,
+            allAnswers: currentQuestion.answers,
+            explanation: !answer.correct ? explanation : ''
             }
         ]);
     
@@ -487,62 +328,62 @@ const saveScore = async () => {
     
     
 
-  return (
-    <div className="container">
-      {isQuizStarted ? (
-        <>
-          <div className="countdown-grid">
-            <h2>{timeLeft}</h2>
-          </div>
-          <div id="question-container">
-            <div id="question">{questions[currentQuestionIndex].question}</div>
-            <div id="answer-buttons" className="btn-grid">
-              {questions[currentQuestionIndex].answers.map((answer, index) => (
-                <button key={index} className="btn" onClick={() => handleAnswer(answer)}>
-                  {answer.text}
-                </button>
-              ))}
+    return (
+        <div >
+          {isQuizStarted ? (
+            <>
+              <div className="countdown-grid">
+                <h2>{timeLeft}</h2>
+              </div>
+              <div id="question-container">
+                <div id="question">{questions[currentQuestionIndex].question}</div>
+                <div id="answer-buttons" className="btn-grid">
+                  {questions[currentQuestionIndex].answers.map((answer, index) => (
+                    <button key={index} className="btn" onClick={() => handleAnswer(answer)}>
+                      {answer.text}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : reviewMode ? (
+            <div>
+              <h2>Your Score: {score}</h2>
+              {!isQuizStarted && timeLeft === 0 && (
+            <div className="score-grid">
+              <h3>Your Score: {score}</h3>
+              <input type="text" placeholder="Enter your name" value={username} onChange={(e) => setUserName(e.target.value)} />
+              <button onClick={saveScore} className="btn">Save Score</button>
+              <button onClick={startQuiz} className="btn start-btn">Start Quiz</button>
+              
             </div>
-          </div>
-        </>
-      ) : reviewMode ? (
-        <div>
-          <h2>Your Score: {score}</h2>
-          <h3>Review your answers</h3>
-          <ul>
-            {selectedAnswers.map((item, index) => (
-              <li key={index}>
-                <p>Question: {item.question}</p>
-                <p>Your Answer: {item.selectedAnswer} {item.correct ? '✅' : '❌'}</p>
-                {/* Display the correct answer if the user's answer was incorrect */}
-                {!item.correct && (
-                  <p style={{color: 'green'}}>
-                    Correct Answer: {
-                      // Find the correct answer from allAnswers
-                      item.allAnswers.find(answer => answer.correct).text
-                    }
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
-          <button onClick={startQuiz} className="btn">Restart Quiz</button>
+          )}
+              <h3>Review your answers</h3>
+              <ul>
+                {selectedAnswers.map((item, index) => (
+                  <li key={index}>
+                    <p>Question: {item.question}</p>
+                    <p>Your Answer: <span style={{ color: item.correct ? 'green' : 'red' }}>{item.selectedAnswer}</span></p>
+                    {!item.correct && (
+                      <>
+                        <p style={{color: 'green'}}>Correct Answer: {
+                          item.allAnswers.find(answer => answer.correct).text
+                        }</p>
+                        <p style={{color: 'blue'}}>Explanation: {item.explanation}</p>
+                      </>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <button onClick={startQuiz} className="btn">Restart Quiz</button>
+            </div>
+          ) : (
+            <button onClick={startQuiz} className="btn start-btn">Start Quiz</button>
+          )}
+          
         </div>
-      ) :  (
-        <button onClick={startQuiz} className="btn start-btn">Start Quiz</button>
-      ) }
-     {!isQuizStarted && timeLeft === 0 && (
-<div className="score-grid">
-  <h3>Your Score: {score} </h3>
-  <input type="text" placeholder="Enter your name" value={username} onChange={(e) => setUserName(e.target.value)} />
-  <button onClick={saveScore} className="btn">Save Score</button>
-  <button onClick={startQuiz} className="btn">Restart Quiz</button>
-</div>
-)}
-
-    </div>
-  );
-  
+      );
+    
 }
 
 export default Quiz;

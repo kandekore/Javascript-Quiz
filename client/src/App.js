@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Quiz from './components/Quiz';
-import Score from './components/Score';
+// import Score from './components/Score';
 import HighScores from './components/HighScores';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Quiz onQuizComplete={onQuizComplete} />} />
-        <Route path="/score" element={<Score score={score} />} />
+        {/* <Route path="/score" element={<Score score={score} />} /> */}
         <Route path="/high-scores" element={<HighScores />} />
       </Routes>
     </Router>

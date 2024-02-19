@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import './css/Quiz.css';
 
@@ -386,18 +386,24 @@ function shuffleQuestions(questions) {
     const [score, setScore] = useState(0);
     const [isQuizStarted, setIsQuizStarted] = useState(false);
     const [username, setUserName] = useState('');
+
+    const endQuiz = useCallback(() => {
+        setIsQuizStarted(false);
+        alert("Time is up! Let's see how you did.");
+        onQuizComplete(score);
+      }, [score, setIsQuizStarted, onQuizComplete]); 
   
     useEffect(() => {
-      let interval = null;
-  
-      if (isQuizStarted && timeLeft > 0) {
-        interval = setInterval(() => setTimeLeft(timeLeft - 1), 1000);
-      } else if (timeLeft <= 0 && isQuizStarted) {
-        endQuiz();
-      }
-  
-      return () => clearInterval(interval);
-    }, [timeLeft, isQuizStarted]);
+        let interval = null;
+
+        if (isQuizStarted && timeLeft > 0) {
+          interval = setInterval(() => setTimeLeft((prevTime) => prevTime - 1), 1000);
+        } else if (timeLeft <= 0 && isQuizStarted) {
+          endQuiz();
+        }
+    
+        return () => clearInterval(interval);
+      }, [timeLeft, isQuizStarted, endQuiz]); 
   
     const startQuiz = () => {
       setQuestions(shuffleQuestions(initialQuestions)); 
@@ -408,13 +414,12 @@ function shuffleQuestions(questions) {
       setIsQuizStarted(true);
     };
   
-    const endQuiz = () => {
-        setIsQuizStarted(false);
+    // const endQuiz = useCallback(() => {
+    //     setIsQuizStarted(false);
+    //     alert("Time is up! Let's see how you did.");
+    //     onQuizComplete(score);
+    //   }, [score, onQuizComplete]); 
 
-        alert("Time is up! Let's see how you did.");
-        onQuizComplete(score); 
-      };
-  
     const handleAnswer = (answer) => {
       if (!isQuizStarted || timeLeft <= 0) return;
   

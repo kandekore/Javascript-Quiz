@@ -30,7 +30,15 @@ app.post('/api/scores', async (req, res) => {
     }
   });
   
-  
+  app.get('/api/scores/highscores', async (req, res) => {
+    try {
+        const highScores = await Score.find({}).sort({score: -1}).limit(10);
+        res.json(highScores);
+    } catch (error) {
+        console.error("Failed to fetch high scores:", error);
+        res.status(500).json({ error: 'Internal Server Error', details: error.message });
+    }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import './css/Quiz.css';
 
 const initialQuestions = [
@@ -365,7 +366,8 @@ const initialQuestions = [
       
       
     ]
-    // Shuffle questions function
+
+
 function shuffleQuestions(questions) {
     let shuffled = [...questions];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -375,13 +377,15 @@ function shuffleQuestions(questions) {
     return shuffled;
   }
   
-  function Quiz() {
+  function Quiz({ onQuizComplete }) {
+    const navigate = useNavigate();
+
     const [questions, setQuestions] = useState(() => shuffleQuestions(initialQuestions));
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [timeLeft, setTimeLeft] = useState(60);
     const [score, setScore] = useState(0);
     const [isQuizStarted, setIsQuizStarted] = useState(false);
-    const [userName, setUserName] = useState('');
+    const [username, setUserName] = useState('');
   
     useEffect(() => {
       let interval = null;
@@ -396,7 +400,7 @@ function shuffleQuestions(questions) {
     }, [timeLeft, isQuizStarted]);
   
     const startQuiz = () => {
-      setQuestions(shuffleQuestions(initialQuestions)); // Shuffle and set questions
+      setQuestions(shuffleQuestions(initialQuestions)); 
       setCurrentQuestionIndex(0);
       setTimeLeft(60);
       setScore(0);
@@ -405,9 +409,11 @@ function shuffleQuestions(questions) {
     };
   
     const endQuiz = () => {
-      setIsQuizStarted(false);
-      alert("Time is up! Let's see how you did.");
-    };
+        setIsQuizStarted(false);
+
+        alert("Time is up! Let's see how you did.");
+        onQuizComplete(score); 
+      };
   
     const handleAnswer = (answer) => {
       if (!isQuizStarted || timeLeft <= 0) return;
@@ -425,17 +431,34 @@ function shuffleQuestions(questions) {
         endQuiz();
       }
     };
+
+ 
+
+
   
-    const saveScore = async () => {
-      const scoreData = { userName, score };
-      // Ensure you replace 'YOUR_BACKEND_ENDPOINT' with your actual endpoint URL
-      await fetch('YOUR_BACKEND_ENDPOINT/api/scores', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(scoreData),
-      });
-      // Consider implementing fetchHighScores to update the high score board
+const saveScore = async () => {
+    const scoreData = { username, score };
+
+    try {
+        const response = await fetch('http://localhost:4000/api/scores', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(scoreData),
+        });
+
+        if (response.ok) {
+       
+            navigate('/high-scores'); 
+        } else {
+            alert('Failed to save score');
+        }
+    } catch (error) {
+        console.error('Error saving score:', error);
+        alert('Error saving score');
+    }
     };
+    
+    
 
   return (
     <div className="container">
@@ -460,8 +483,8 @@ function shuffleQuestions(questions) {
       )}
      {!isQuizStarted && timeLeft === 0 && (
 <div className="score-grid">
-  <h3>Your Score: {score} / {questions.length}</h3>
-  <input type="text" placeholder="Enter your name" value={userName} onChange={(e) => setUserName(e.target.value)} />
+  <h3>Your Score: {score} </h3>
+  <input type="text" placeholder="Enter your name" value={username} onChange={(e) => setUserName(e.target.value)} />
   <button onClick={saveScore} className="btn">Save Score</button>
   <button onClick={startQuiz} className="btn">Restart Quiz</button>
 </div>

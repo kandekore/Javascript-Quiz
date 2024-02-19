@@ -1,5 +1,3 @@
-const { typeDefs } = require("graphql");
-
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
@@ -8,9 +6,21 @@ const typeDefs = gql`
     username: String!
     score: Int!
   }
+  type Answer {
+    text: String!
+    correct: Boolean!
+  }
+
+  type Question {
+    id: ID!
+    question: String!
+    answers: [Answer!]!
+    explanation: String!
+  }
 
   type Query {
     highScores: [Score]!
+    questions: [Question!]!
   }
 
   type Mutation {

@@ -198,6 +198,1369 @@
         {"text": "To rethrow an error caught in the catch block", "correct": false}
       ],
       "explanation": "The `finally` block executes after the try and catch blocks but before any subsequent code. It executes regardless of whether an exception was thrown or caught, allowing for cleanup code to be run."
-    }
+    },
+      {
+        "question": "What does the `document.getElementById` function do?",
+        "answers": [
+          {"text": "Retrieves an HTML element by its ID", "correct": true},
+          {"text": "Updates an HTML element's ID", "correct": false},
+          {"text": "Deletes an HTML element by its ID", "correct": false},
+          {"text": "Creates a new HTML element with an ID", "correct": false}
+        ],
+        "explanation": "`document.getElementById` is a method used to access and manipulate the DOM of a webpage. It allows JavaScript to get a reference to an HTML element by its unique ID, enabling the script to read or modify the element's properties or content."
+      },
+      {
+        "question": "What is the purpose of the `Array.map()` method in JavaScript?",
+        "answers": [
+          {"text": "To execute a function on each item in an array and collect the results", "correct": true},
+          {"text": "To filter items out of an array", "correct": false},
+          {"text": "To reduce an array to a single value", "correct": false},
+          {"text": "To check if any items in an array pass a test", "correct": false}
+        ],
+        "explanation": "The `Array.map()` method creates a new array populated with the results of calling a provided function on every element in the calling array. It's useful for transforming data without mutating the original array."
+      },
+      {
+        "question": "What does the `===` operator check for?",
+        "answers": [
+          {"text": "If two values are equal", "correct": false},
+          {"text": "If two values are equal in value and type", "correct": true},
+          {"text": "If two values are not equal", "correct": false},
+          {"text": "If two values are equal in type only", "correct": false}
+        ],
+        "explanation": "The `===` operator is a strict equality comparison operator in JavaScript, which checks whether its two operands are equal in both value and type, without performing type conversion."
+      },
+      {
+        "question": "How can you stop the execution of a setInterval function?",
+        "answers": [
+          {"text": "clearInterval(intervalID)", "correct": true},
+          {"text": "clearInterval()", "correct": false},
+          {"text": "stopInterval(intervalID)", "correct": false},
+          {"text": "stopInterval()", "correct": false}
+        ],
+        "explanation": "`clearInterval(intervalID)` is used to stop a timer set with the `setInterval()` method. `intervalID` is the identifier of the interval to be cleared, which is returned by `setInterval()`."
+      },
+      {
+        "question": "What does the `JSON.parse()` method do?",
+        "answers": [
+          {"text": "Converts a JavaScript object into a JSON string", "correct": false},
+          {"text": "Parses a JSON string, constructing the JavaScript value or object described by the string", "correct": true},
+          {"text": "Encodes special JSON characters in a string", "correct": false},
+          {"text": "None of the above", "correct": false}
+        ],
+        "explanation": "`JSON.parse()` method parses a JSON string, constructing the JavaScript value or object described by the string. This is commonly used to convert data received from a web server into a usable JavaScript object."
+      },
+      {
+        "question": "Which of the following is not a valid way to declare a variable in JavaScript?",
+        "answers": [
+          {"text": "var name = \"John\";", "correct": false},
+          {"text": "let name = \"John\";", "correct": false},
+          {"text": "const name = \"John\";", "correct": false},
+          {"text": "variable name = \"John\";", "correct": true}
+        ],
+        "explanation": "`var`, `let`, and `const` are the only valid keywords to declare variables in JavaScript. The `variable` keyword does not exist in JavaScript syntax."
+      },
+      {
+        "question": "How do you create a class in JavaScript?",
+        "answers": [
+          {"text": "class MyClass {}", "correct": true},
+          {"text": "create MyClass {}", "correct": false},
+          {"text": "function MyClass() {}", "correct": false},
+          {"text": "new Class(MyClass);", "correct": false}
+        ],
+        "explanation": "Classes in JavaScript are a template for creating objects. They encapsulate data with code to work on that data. Classes use the `class` keyword followed by the class name and curly braces `{}` to define the body."
+      },
+      {
+        "question": "What is the use of the `async` keyword in JavaScript?",
+        "answers": [
+          {"text": "Makes a function return a promise", "correct": false},
+          {"text": "Allows a function to await a Promise", "correct": false},
+          {"text": "Both A and B", "correct": true},
+          {"text": "Pauses the execution of synchronous JavaScript code", "correct": false}
+        ],
+        "explanation": "The `async` keyword is used before a function to indicate that the function always returns a promise. Functions marked with `async` can also use the `await` keyword to pause the execution until the promise is resolved."
+      },
+      {
+        "question": "What is event bubbling in JavaScript?",
+        "answers": [
+          {"text": "Directly handling an event on the element it occurred", "correct": false},
+          {"text": "The event gets handled by the innermost element first and then propagated to outer elements", "correct": false},
+          {"text": "The event is directly captured by the outermost element and propagated to the inner elements", "correct": false},
+          {"text": "The event starts from the outermost element and is propagated to the innermost element", "correct": true}
+        ],
+        "explanation": "Event bubbling is a method of event propagation in the DOM where events start from the deepest element (innermost) and then propagate to the outer elements. This is the default behavior of events in most browsers."
+      },
+      {
+        "question": "What will the following code output? `console.log(\"5\" + 3);`",
+        "answers": [
+          {"text": "8", "correct": false},
+          {"text": "53", "correct": true},
+          {"text": "\"53\"", "correct": false},
+          {"text": "TypeError", "correct": false}
+        ],
+        "explanation": "In JavaScript, the `+` operator is used for both addition and concatenation. If one of the operands is a string, JavaScript will treat the operation as concatenation, converting the other operand to a string if necessary."
+      },
+      {
+        "question": "How do you copy an object in JavaScript?",
+        "answers": [
+          {"text": "Object.copy(obj)", "correct": false},
+          {"text": "var copy = Object.assign({}, obj);", "correct": true},
+          {"text": "var copy = copyObject(obj);", "correct": false},
+          {"text": "var copy = obj.copy();", "correct": false}
+        ],
+        "explanation": "`Object.assign(target, ...sources)` method is used to copy all enumerable own properties from one or more source objects to a target object. It returns the target object."
+      },
+      {
+        "question": "Which method can be used to check if an array includes a certain value?",
+        "answers": [
+          {"text": "array.contains(value)", "correct": false},
+          {"text": "array.includes(value)", "correct": true},
+          {"text": "array.has(value)", "correct": false},
+          {"text": "array.find(value)", "correct": false}
+        ],
+        "explanation": "The `array.includes()` method determines whether an array includes a certain value among its entries, returning `true` or `false` as appropriate."
+      },
+      {
+        "question": "What is a Promise in JavaScript?",
+        "answers": [
+          {"text": "A function that awaits a result", "correct": false},
+          {"text": "An object representing the eventual completion or failure of an asynchronous operation", "correct": true},
+          {"text": "A data type specifically used for mathematical calculations", "correct": false},
+          {"text": "A callback function for asynchronous operations", "correct": false}
+        ],
+        "explanation": "A Promise is an object representing the eventual completion or failure of an asynchronous operation. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason."
+      },
+      {
+        "question": "What does the `typeof` operator return for a function in JavaScript?",
+        "answers": [
+          {"text": "\"function\"", "correct": true},
+          {"text": "\"object\"", "correct": false},
+          {"text": "\"method\"", "correct": false},
+          {"text": "\"callable\"", "correct": false}
+        ],
+        "explanation": "The `typeof` operator in JavaScript returns a string indicating the type of the unevaluated operand. For functions, it returns `\"function\"`."
+      },
+      {
+        "question": "How do you add an element at the beginning of an array in JavaScript?",
+        "answers": [
+          {"text": "array.push(element)", "correct": false},
+          {"text": "array.unshift(element)", "correct": true},
+          {"text": "array.addFirst(element)", "correct": false},
+          {"text": "array.prepend(element)", "correct": false}
+        ],
+        "explanation": "The `array.unshift()` method adds one or more elements to the beginning of an array and returns the new length of the array."
+      },
+      {
+        "question": "What does the `fetch` function in JavaScript do?",
+        "answers": [
+          {"text": "Synchronously sends data to a server", "correct": false},
+          {"text": "Asynchronously retrieves data from a server", "correct": true},
+          {"text": "Deletes data from a server", "correct": false},
+          {"text": "Updates data on a server", "correct": false}
+        ],
+        "explanation": "The `fetch` function provides an easy, logical way to fetch resources asynchronously across the network. It returns a Promise that resolves to the Response to that request, whether it is successful or not."
+      },
+      {
+        "question": "How do you remove a specific element from an array in JavaScript?",
+        "answers": [
+          {"text": "array.splice(index, 1)", "correct": true},
+          {"text": "array.remove(element)", "correct": false},
+          {"text": "array.delete(index)", "correct": false},
+          {"text": "array.cut(index)", "correct": false}
+        ],
+        "explanation": "The `array.splice()` method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. To remove a specific element, you specify the index of the element and delete count as 1."
+      },
+      {
+        "question": "What is the output of `console.log(1 + '2' + 3)`?",
+        "answers": [
+          {"text": "\"123\"", "correct": true},
+          {"text": "\"6\"", "correct": false},
+          {"text": "\"15\"", "correct": false},
+          {"text": "TypeError", "correct": false}
+        ],
+        "explanation": "JavaScript performs concatenation when one of the operands is a string. Thus, 1 is concatenated with '2' as \"12\", and then \"12\" is concatenated with 3, resulting in \"123\"."
+      },
+      {
+        "question": "What keyword is used to define a block of code that will be executed if an error occurs in a try block?",
+        "answers": [
+          {"text": "catch", "correct": true},
+          {"text": "error", "correct": false},
+          {"text": "finally", "correct": false},
+          {"text": "except", "correct": false}
+        ],
+        "explanation": "The `catch` keyword is used in try-catch statements in JavaScript to define a block of code that will be executed if an error occurs in the try block."
+      },
+      {
+        "question": "What is the purpose of the `finally` block in a try-catch statement?",
+        "answers": [
+          {"text": "To execute code after the try and catch blocks, regardless of the result", "correct": true},
+          {"text": "To handle the error specifically after the catch block", "correct": false},
+          {"text": "To finalize the try block execution before the catch block", "correct": false},
+          {"text": "To rethrow an error caught in the catch block", "correct": false}
+        ],
+        "explanation": "The `finally` block executes after the try and catch blocks but before any subsequent code. It executes regardless of whether an exception was thrown or caught, allowing for cleanup code to be run."
+      },
+      {
+        "question": "How do you declare a JavaScript variable that cannot be reassigned?",
+        "answers": [
+          {"text": "var name = 'John';", "correct": false},
+          {"text": "let name = 'John';", "correct": false},
+          {"text": "const name = 'John';", "correct": true},
+          {"text": "variable name = 'John';", "correct": false}
+        ],
+        "explanation": "The `const` keyword is used to declare a variable that cannot be reassigned. Once a variable is assigned with `const`, its value cannot be changed (although if it's an object or array, its properties or elements can be updated)."
+      },
+      {
+        "question": "What method is used to combine two or more arrays in JavaScript?",
+        "answers": [
+          {"text": "Array.concat()", "correct": true},
+          {"text": "Array.join()", "correct": false},
+          {"text": "Array.merge()", "correct": false},
+          {"text": "Array.combine()", "correct": false}
+        ],
+        "explanation": "The `Array.concat()` method is used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array."
+      },
+      {
+        "question": "How do you check if a variable is an array in JavaScript?",
+        "answers": [
+          {"text": "typeof variable === 'array';", "correct": false},
+          {"text": "variable instanceof Array;", "correct": false},
+          {"text": "Array.isArray(variable);", "correct": true},
+          {"text": "variable.isArray();", "correct": false}
+        ],
+        "explanation": "The `Array.isArray()` method determines whether the passed value is an Array. It is the recommended way to check if a variable is an array because it avoids the pitfalls of the `instanceof` operator in a context with multiple execution frames."
+      },
+      {
+        "question": "What does `this` keyword refer to in a JavaScript function?",
+        "answers": [
+          {"text": "The global object", "correct": false},
+          {"text": "The document object", "correct": false},
+          {"text": "The window object", "correct": false},
+          {"text": "The object that called the function", "correct": true}
+        ],
+        "explanation": "In JavaScript, `this` keyword refers to the object that is executing the current function. If the function is a method in an object, `this` refers to the object. In the global context or in a function, `this` refers to the global object (window in a browser, global in Node.js)."
+      },
+      {
+        "question": "How do you remove the first element from an array and return that element in JavaScript?",
+        "answers": [
+          {"text": "array.pop()", "correct": false},
+          {"text": "array.shift()", "correct": true},
+          {"text": "array.unshift()", "correct": false},
+          {"text": "array.push()", "correct": false}
+        ],
+        "explanation": "The `array.shift()` method removes the first element from an array and returns that removed element. This method changes the length of the array."
+      },
+      {
+        "question": "How do you prevent a form from submitting using JavaScript?",
+        "answers": [
+          {"text": "event.preventDefault();", "correct": true},
+          {"text": "event.stopPropagation();", "correct": false},
+          {"text": "event.stopImmediatePropagation();", "correct": false},
+          {"text": "event.cancelBubble();", "correct": false}
+        ],
+        "explanation": "`event.preventDefault()` is called on the event object to prevent the default action of the event from being triggered. For a form submission, this means preventing the form from submitting."
+      },
+      {
+        "question": "Which method is used to sort the elements of an array in place and return the array?",
+        "answers": [
+          {"text": "array.sort()", "correct": true},
+          {"text": "array.order()", "correct": false},
+          {"text": "array.arrange()", "correct": false},
+          {"text": "array.sequence()", "correct": false}
+        ],
+        "explanation": "The `array.sort()` method sorts the elements of an array in place and returns the sorted array. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values."
+      },
+      {
+        "question": "What is a callback function in JavaScript?",
+        "answers": [
+          {"text": "A function that is called in response to an event", "correct": false},
+          {"text": "A function passed into another function as an argument to be executed later", "correct": true},
+          {"text": "A function that calls back the user after a set time", "correct": false},
+          {"text": "A function that returns its input back to the caller", "correct": false}
+        ],
+        "explanation": "A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action."
+      },
+      {
+        "question": "How do you find the length of a string in JavaScript?",
+        "answers": [
+          {"text": "string.length()", "correct": false},
+          {"text": "string.size()", "correct": false},
+          {"text": "string.length", "correct": true},
+          {"text": "length(string)", "correct": false}
+        ],
+        "explanation": "The length of a string in JavaScript can be found using the `.length` property. This property returns the number of characters in a string."
+      },
+      {
+        "question": "How do you declare a function that takes two parameters in JavaScript?",
+        "answers": [
+          {"text": "function myFunction(a, b) {}", "correct": true},
+          {"text": "function myFunction:a, b {}", "correct": false},
+          {"text": "function (a, b) myFunction {}", "correct": false},
+          {"text": "myFunction function(a, b) {}", "correct": false}
+        ],
+        "explanation": "In JavaScript, a function is declared using the `function` keyword followed by the function name and a list of parameters in parentheses. The correct syntax for declaring a function with two parameters is `function myFunction(a, b) {}`."
+      },
+      {
+        "question": "What is the default behavior of the `submit` event in a form?",
+        "answers": [
+          {"text": "Data validation", "correct": false},
+          {"text": "Opening a new webpage", "correct": false},
+          {"text": "Sending the form data to the server", "correct": true},
+          {"text": "Clearing the form fields", "correct": false}
+        ],
+        "explanation": "The default behavior of the `submit` event in a form is to send the form data to the server. This action can be prevented using `event.preventDefault()` in JavaScript."
+      },
+      {
+        "question": "What will `console.log('2' + 2 * '2')` output?",
+        "answers": [
+          {"text": "6", "correct": false},
+          {"text": "22", "correct": false},
+          {"text": "24", "correct": false},
+          {"text": "222", "correct": true}
+        ],
+        "explanation": "JavaScript evaluates the multiplication first (`2 * '2'` equals 4), then it concatenates the string '2' with the result of the multiplication, resulting in '222'."
+      },
+      {
+        "question": "How do you create an object in JavaScript?",
+        "answers": [
+          {"text": "var obj = new Object();", "correct": false},
+          {"text": "var obj = {};", "correct": true},
+          {"text": "var obj = Object.create();", "correct": false},
+          {"text": "var obj = object();", "correct": false}
+        ],
+        "explanation": "Objects in JavaScript can be created using object literal syntax `var obj = {};` or using the `new Object()` constructor. However, the object literal syntax is more common and preferred for its simplicity."
+      },
+      {
+        "question": "Which operator is used to assign a value to a variable in JavaScript?",
+        "answers": [
+          {"text": "==", "correct": false},
+          {"text": ":=", "correct": false},
+          {"text": "=", "correct": true},
+          {"text": "=>", "correct": false}
+        ],
+        "explanation": "The `=` operator is used to assign a value to a variable in JavaScript. It is a fundamental operator for variable initialization and assignment."
+      },
+      {
+        "question": "What will the following code output? `console.log(typeof null);`",
+        "answers": [
+          {"text": "'null'", "correct": false},
+          {"text": "'object'", "correct": true},
+          {"text": "'undefined'", "correct": false},
+          {"text": "'type'", "correct": false}
+        ],
+        "explanation": "In JavaScript, `typeof null` will return `'object'`. This is a well-known bug in JavaScript, as `null` is not actually an object but a primitive value."
+      },
+      {
+        "question": "How can you convert a string into an integer in JavaScript?",
+        "answers": [
+          {"text": "int.parse(string)", "correct": false},
+          {"text": "parseInt(string)", "correct": true},
+          {"text": "string.toInt()", "correct": false},
+          {"text": "Number.parse(string)", "correct": false}
+        ],
+        "explanation": "The `parseInt()` function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems). It's a common way to convert a string that represents a number into an integer."
+      },
+      {
+        "question": "Which JavaScript event is triggered when the document has been completely loaded and parsed?",
+        "answers": [
+          {"text": "onload", "correct": true},
+          {"text": "onready", "correct": false},
+          {"text": "oncomplete", "correct": false},
+          {"text": "onfinish", "correct": false}
+        ],
+        "explanation": "The `onload` event is triggered when the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading."
+      },
+      {
+        "question": "How do you write a comment in JavaScript?",
+        "answers": [
+          {"text": "// This is a comment", "correct": true},
+          {"text": "<!-- This is a comment -->", "correct": false},
+          {"text": "'This is a comment", "correct": false},
+          {"text": "# This is a comment", "correct": false}
+        ],
+        "explanation": "In JavaScript, comments can be written using two forward slashes `//` for single-line comments, and `/* */` for multi-line comments. The `//` syntax precedes the comment text."
+      },
+      {
+        "question": "Which method can be used to round a number to the nearest integer in JavaScript?",
+        "answers": [
+          {"text": "Math.round()", "correct": true},
+          {"text": "Math.floor()", "correct": false},
+          {"text": "Math.ceil()", "correct": false},
+          {"text": "Number.round()", "correct": false}
+        ],
+        "explanation": "The `Math.round()` method rounds a number to the nearest integer. If the fractional part of the number is .5 or greater, the argument is rounded to the next higher integer."
+      },
+      {
+        "question": "What is the correct syntax to create a new instance of an object called `MyObject`?",
+        "answers": [
+          {"text": "var myObj = new MyObject();", "correct": true},
+          {"text": "var myObj = create MyObject();", "correct": false},
+          {"text": "var myObj = construct MyObject();", "correct": false},
+          {"text": "var myObj = MyObject.new();", "correct": false}
+        ],
+        "explanation": "In JavaScript, new instances of an object can be created using the `new` keyword followed by the function or class name and parentheses. The correct syntax is `var myObj = new MyObject();`."
+      },
+      {
+        "question": "Which of the following methods can be used to encode a URL in JavaScript?",
+        "answers": [
+          {"text": "encodeURI(url)", "correct": true},
+          {"text": "encodeURIComponent(url)", "correct": false},
+          {"text": "escape(url)", "correct": false},
+          {"text": "urlEncode(url)", "correct": false}
+        ],
+        "explanation": "`encodeURI(url)` is used to encode a URL. It encodes special characters, except: , / ? : @ & = + $ #. For encoding these characters as well, `encodeURIComponent(url)` should be used."
+      },
+      {
+        "question": "How do you create a new Promise in JavaScript?",
+        "answers": [
+          {"text": "new Promise()", "correct": true},
+          {"text": "Promise.new()", "correct": false},
+          {"text": "Promise()", "correct": false},
+          {"text": "create Promise()", "correct": false}
+        ],
+        "explanation": "A new Promise in JavaScript is created using the `new Promise()` constructor, which takes a function as an argument. This function is called with two arguments: resolve and reject, which are used to settle the promise."
+      },
+      {
+        "question": "Which of the following is not a valid JavaScript data type?",
+        "answers": [
+          {"text": "Undefined", "correct": false},
+          {"text": "Number", "correct": false},
+          {"text": "Boolean", "correct": false},
+          {"text": "Character", "correct": true}
+        ],
+        "explanation": "JavaScript provides different data types such as `Undefined`, `Number`, `Boolean`, `String`, `BigInt`, `Symbol`, `Object`, and `null`. `Character` is not a separate data type; characters are represented as strings."
+      },
+      {
+        "question": "What is the outcome of trying to access a property of `null` or `undefined` in JavaScript?",
+        "answers": [
+          {"text": "0", "correct": false},
+          {"text": "false", "correct": false},
+          {"text": "TypeError", "correct": true},
+          {"text": "undefined", "correct": false}
+        ],
+        "explanation": "Accessing a property of `null` or `undefined` will result in a `TypeError` in JavaScript, as these values are not objects and have no properties."
+      },
+      {
+        "question": "Which of the following is a correct method to clone an array?",
+        "answers": [
+          {"text": "var clone = originalArray.clone();", "correct": false},
+          {"text": "var clone = [...originalArray];", "correct": true},
+          {"text": "var clone = Array.clone(originalArray);", "correct": false},
+          {"text": "var clone = originalArray;", "correct": false}
+        ],
+        "explanation": "`var clone = [...originalArray];` uses the spread operator to create a shallow clone of the original array. It's a concise and commonly used method for cloning arrays in modern JavaScript."
+      },
+      {
+        "question": "How do you add a key-value pair to a JavaScript object after it has been created?",
+        "answers": [
+          {"text": "object.add(key, value);", "correct": false},
+          {"text": "object[key] = value;", "correct": true},
+          {"text": "object.key = value;", "correct": false},
+          {"text": "object.push({key: value});", "correct": false}
+        ],
+        "explanation": "To add a key-value pair to an existing JavaScript object, you can use the syntax `object[key] = value;`. This allows you to set the value of the property with the name `key` to `value`."
+      },
+      {
+        "question": "What is the correct way to check if a JavaScript object has a property called 'key'?",
+        "answers": [
+          {"text": "'key' in object", "correct": true},
+          {"text": "object.has('key')", "correct": false},
+          {"text": "object.hasOwnProperty('key')", "correct": false},
+          {"text": "object.contains('key')", "correct": false}
+        ],
+        "explanation": "The `'key' in object` syntax checks if the object has a property called 'key'. It checks both own properties and inherited properties. `object.hasOwnProperty('key')` can be used to check only for own properties, without checking the prototype chain."
+      },
+      {
+        "question": "Which of the following is true about the `forEach` method on arrays?",
+        "answers": [
+          {"text": "It modifies the original array.", "correct": false},
+          {"text": "It returns a new array.", "correct": false},
+          {"text": "It can be used to execute a function on each array element.", "correct": true},
+          {"text": "It stops executing when a `return` statement is encountered.", "correct": false}
+        ],
+        "explanation": "The `forEach` method executes a provided function once for each array element. It does not modify the original array or return a new array. Unlike `map` or `filter`, `forEach` does not stop when a `return` statement is encountered."
+      },
+      {
+        "question": "How do you stop a propagation of an event in JavaScript?",
+        "answers": [
+          {"text": "event.stopPropagation();", "correct": true},
+          {"text": "event.preventDefault();", "correct": false},
+          {"text": "event.stopImmediatePropagation();", "correct": false},
+          {"text": "stop(event);", "correct": false}
+        ],
+        "explanation": "`event.stopPropagation()` is used to prevent further propagation of the current event in the capturing and bubbling phases. It stops the event from being propagated to parent elements but does not prevent the default action of the event."
+      },
+      {
+        "question": "Which operator is used in JavaScript for string concatenation?",
+        "answers": [
+          {"text": "+", "correct": true},
+          {"text": "&", "correct": false},
+          {"text": ".", "correct": false},
+          {"text": "#", "correct": false}
+        ],
+        "explanation": "The `+` operator is used in JavaScript for string concatenation. It combines two string values together into one string."
+      },
+      {
+        "question": "What will `console.log(0.1 + 0.2 === 0.3)` output?",
+        "answers": [
+          {"text": "true", "correct": false},
+          {"text": "false", "correct": true},
+          {"text": "undefined", "correct": false},
+          {"text": "TypeError", "correct": false}
+        ],
+        "explanation": "Due to floating-point arithmetic and precision issues, `console.log(0.1 + 0.2 === 0.3)` will output `false`. This is a well-known issue in many programming languages, not just JavaScript."
+      },
+      {
+        "question": "How can you convert the string 'true' to a boolean true in JavaScript?",
+        "answers": [
+          {"text": "Boolean('true')", "correct": true},
+          {"text": "toBoolean('true')", "correct": false},
+          {"text": "'true'.toBoolean()", "correct": false},
+          {"text": "parseBool('true')", "correct": false}
+        ],
+        "explanation": "`Boolean('true')` will convert the string 'true' to the boolean value `true`. In JavaScript, passing a non-empty string to the `Boolean` constructor will always result in `true`."
+      },
+      {
+        "question": "Which statement about arrow functions in JavaScript is true?",
+        "answers": [
+          {"text": "They do not have their own `this` context.", "correct": true},
+          {"text": "They can be used as constructors.", "correct": false},
+          {"text": "They have their own arguments object.", "correct": false},
+          {"text": "They are hoisted like function declarations.", "correct": false}
+        ],
+        "explanation": "Arrow functions do not have their own `this` context but inherit `this` from the parent scope at the time they are defined. They cannot be used as constructors, do not have their own `arguments` object, and are not hoisted."
+      },
+      {
+        "question": "What does the `nullish coalescing operator (??)` do?",
+        "answers": [
+          {"text": "Returns the right-hand operand if the left-hand operand is null or undefined", "correct": true},
+          {"text": "Checks if the left-hand operand is null or undefined", "correct": false},
+          {"text": "Coalesces multiple null values into one", "correct": false},
+          {"text": "Compares two values for equality, considering null and undefined as equal", "correct": false}
+        ],
+        "explanation": "The `nullish coalescing operator (??)` returns its right-hand operand when its left-hand operand is `null` or `undefined`, and otherwise returns its left-hand operand. It provides a way to handle default values for potentially `null` or `undefined` variables."
+      },
+      {
+        "question": "How do you find the character at a specific index in a string?",
+        "answers": [
+          {"text": "string.charAt(index)", "correct": true},
+          {"text": "string[index]", "correct": false},
+          {"text": "string.at(index)", "correct": false},
+          {"text": "string.getChar(index)", "correct": false}
+        ],
+        "explanation": "`string.charAt(index)` method returns the character at the specified index in a string. `string[index]` syntax can also be used as a more modern alternative to access characters by index."
+      },
+      {
+        "question": "What is `Symbol` in JavaScript?",
+        "answers": [
+          {"text": "A method for generating unique IDs", "correct": false},
+          {"text": "A data type used for unique identifiers", "correct": true},
+          {"text": "A built-in object for mathematics operations", "correct": false},
+          {"text": "A debugging tool", "correct": false}
+        ],
+        "explanation": "`Symbol` is a primitive data type in JavaScript, introduced in ES6, used for creating unique identifiers for objects. Symbols are immutable and are unique."
+      },
+      {
+        "question": "Which of the following correctly shows the use of template literals in JavaScript?",
+        "answers": [
+          {"text": "`Hello, ${name}!`", "correct": true},
+          {"text": "\"Hello, ${name}!\"", "correct": false},
+          {"text": "'Hello, ${name}!'", "correct": false},
+          {"text": "<Hello, ${name}!>", "correct": false}
+        ],
+        "explanation": "Template literals are enclosed by the backtick (` `) characters and allow embedded expressions called placeholders. `${expression}` is used within template literals to embed expressions."
+      },
+      {
+        "question": "How can you destructively remove and return the last element of an array?",
+        "answers": [
+          {"text": "array.pop()", "correct": true},
+          {"text": "array.push()", "correct": false},
+          {"text": "array.shift()", "correct": false},
+          {"text": "array.splice(-1, 1)", "correct": false}
+        ],
+        "explanation": "`array.pop()` removes the last element from an array and returns that element, modifying the original array. Although `array.splice(-1, 1)` also removes the last element, it returns an array containing the removed element, not the element itself."
+      },
+      {
+        "question": "Which HTML element is used to execute JavaScript code?",
+        "answers": [
+          {"text": "<script>", "correct": true},
+          {"text": "<javascript>", "correct": false},
+          {"text": "<js>", "correct": false},
+          {"text": "<code>", "correct": false}
+        ],
+        "explanation": "The `<script>` element is used to define client-side JavaScripts. Code inside a `<script>` element can be executed in the HTML document."
+      },
+      {
+        "question": "Explain event delegation in JavaScript.",
+        "answers": [
+          {"text": "Directly attaching event handlers to each child element", "correct": false},
+          {"text": "Attaching an event handler to a parent element instead of multiple child elements", "correct": true},
+          {"text": "Dispatching events from child elements to parent elements", "correct": false},
+          {"text": "Cloning an event from a parent element to child elements", "correct": false}
+        ],
+        "explanation": "Event delegation is a technique where instead of adding an event listener to each individual child element, you add a single event listener to a parent element. This listener analyzes bubbled events to find a child element match and handles the event."
+      },
+      {
+        "question": "What is the difference between `==` and `===` in JavaScript?",
+        "answers": [
+          {"text": "`==` compares values after type coercion, `===` compares both value and type", "correct": true},
+          {"text": "`==` compares only the type, `===` compares both type and value", "correct": false},
+          {"text": "There is no difference; they function the same", "correct": false},
+          {"text": "`==` is used for numeric comparisons, while `===` is used for string comparisons", "correct": false}
+        ],
+        "explanation": "`==` (equality operator) performs type coercion if the types of the two operands are not the same before comparing. `===` (strict equality operator) checks for both type and value equality without converting the types."
+      },
+      {
+        "question": "What is a closure in JavaScript?",
+        "answers": [
+          {"text": "A function returned by another function with access to the outer scope", "correct": true},
+          {"text": "The process of combining multiple functions into one", "correct": false},
+          {"text": "A feature that allows JavaScript code to be executed asynchronously", "correct": false},
+          {"text": "An error that occurs when a function does not return a value", "correct": false}
+        ],
+        "explanation": "A closure is a function that has access to the parent scope, even after the parent function has closed. This is a powerful feature in JavaScript, allowing for data encapsulation and some object-oriented programming patterns."
+      },
+      {
+        "question": "How can you prevent a JavaScript object's properties from being modified?",
+        "answers": [
+          {"text": "Using the `Object.freeze()` method", "correct": true},
+          {"text": "Using the `const` keyword", "correct": false},
+          {"text": "Using the `Object.preventExtensions()` method", "correct": false},
+          {"text": "Using the `readonly` attribute", "correct": false}
+        ],
+        "explanation": "`Object.freeze()` makes an object immutable, meaning its properties cannot be added, removed, or modified. `const` only prevents reassignment of the variable to a different object."
+      },
+      {
+        "question": "What is the purpose of the `bind` method in JavaScript?",
+        "answers": [
+          {"text": "To permanently associate a function with an object", "correct": true},
+          {"text": "To duplicate an existing function", "correct": false},
+          {"text": "To asynchronously execute a function", "correct": false},
+          {"text": "To concatenate two strings", "correct": false}
+        ],
+        "explanation": "The `bind` method creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called."
+      },
+      {
+        "question": "What is the execution context in JavaScript?",
+        "answers": [
+          {"text": "The location where the script is executed in the HTML document", "correct": false},
+          {"text": "An environment where JavaScript code is evaluated and executed", "correct": true},
+          {"text": "The current scope chain of a function", "correct": false},
+          {"text": "The browser window in which the JavaScript code is running", "correct": false}
+        ],
+        "explanation": "The execution context is the environment in which JavaScript code is executed. It includes things like variable scope, the value of `this`, and the call stack. Each function call creates a new execution context."
+      },
+      {
+        "question": "What does `use strict` do in JavaScript?",
+        "answers": [
+          {"text": "Enables strict mode, which enforces stricter parsing and error handling", "correct": true},
+          {"text": "Strictly types variables to prevent type coercion", "correct": false},
+          {"text": "Encrypts the script for security purposes", "correct": false},
+          {"text": "Compiles JavaScript into machine code for faster execution", "correct": false}
+        ],
+        "explanation": "`use strict` is a directive that activates strict mode in JavaScript. This mode intentionally has different semantics from normal code. It helps catch common coding bloopers, prevents, or throws errors for unsafe actions (like gaining access to the global object), and disables features that are confusing or poorly thought out."
+      },
+      {
+        "question": "What is the Event Loop in JavaScript?",
+        "answers": [
+          {"text": "A loop that continuously checks for user events", "correct": false},
+          {"text": "The process that allows JavaScript to perform non-blocking operations", "correct": true},
+          {"text": "A programming construct that waits for events to occur", "correct": false},
+          {"text": "A loop that runs inside the JavaScript engine to process promises and callbacks", "correct": false}
+        ],
+        "explanation": "The Event Loop is a mechanism that allows JavaScript to perform non-blocking operations by using callbacks and promises, despite JavaScript being single-threaded. It monitors the call stack and the callback queue, and when the call stack is empty, it moves callbacks from the queue to the call stack to be executed."
+      },
+      {
+        "question": "How do you ensure a function runs after the completion of an asynchronous operation in JavaScript?",
+        "answers": [
+          {"text": "Using a callback function", "correct": false},
+          {"text": "Using the `await` keyword", "correct": false},
+          {"text": "Using the `Promise` object", "correct": false},
+          {"text": "All of the above", "correct": true}
+        ],
+        "explanation": "All the mentioned methods can ensure a function runs after the completion of an asynchronous operation. Callbacks are the traditional way, while Promises and async/await are more modern approaches that make asynchronous code more readable and easier to write."
+      },
+      {
+        "question": "What is the difference between `null` and `undefined` in JavaScript?",
+        "answers": [
+          {"text": "`null` is an assignment value, indicating that a variable points to no object. `undefined` means a variable has been declared but not defined yet.", "correct": true},
+          {"text": "`null` means no value or non-existent, while `undefined` is a type itself.", "correct": false},
+          {"text": "`null` is used for objects only, while `undefined` can be used for any type.", "correct": false},
+          {"text": "There is no significant difference; both can be used interchangeably.", "correct": false}
+        ],
+        "explanation": "`null` is an intentional absence of any object value and must be assigned. `undefined` means a variable has been declared but has not yet been assigned a value. `null` and `undefined` are both falsy values but have different uses and meanings."
+      },
+      {
+        "question": "Explain the difference between mutable and immutable objects.",
+        "answers": [
+          {"text": "Mutable objects can be changed after creation, while immutable objects cannot.", "correct": true},
+          {"text": "Immutable objects can change type, while mutable objects cannot.", "correct": false},
+          {"text": "Mutable objects are always faster than immutable objects.", "correct": false},
+          {"text": "Immutable objects are used for temporary data storage.", "correct": false}
+        ],
+        "explanation": "Mutable objects are those whose state or content can be changed after they are created. Immutable objects, once created, cannot be altered, making their state predictable and easier to reason about in complex applications."
+      },
+      {
+        "question": "What is hoisting in JavaScript?",
+        "answers": [
+          {"text": "The process of moving variable and function declarations to the top of their containing scope", "correct": true},
+          {"text": "A feature that automatically moves variables to the top of a function for faster access", "correct": false},
+          {"text": "Elevating function calls above variable declarations", "correct": false},
+          {"text": "A security mechanism to prevent unauthorized access to variables", "correct": false}
+        ],
+        "explanation": "Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function). This means that variables and function declarations are processed before any code is executed."
+      },
+      {
+        "question": "What are template literals in JavaScript?",
+        "answers": [
+          {"text": "HTML templates that can be used with JavaScript", "correct": false},
+          {"text": "Strings that allow embedded expressions and multi-line strings", "correct": true},
+          {"text": "Literals that are strictly typed and cannot be changed", "correct": false},
+          {"text": "JavaScript literals that are precompiled for performance", "correct": false}
+        ],
+        "explanation": "Template literals are string literals allowing embedded expressions. They can contain placeholders which are denoted by the dollar sign and curly braces `${expression}`. They can also span multiple lines, making them more readable and convenient for complex strings."
+      },
+      {
+        "question": "Explain the difference between `let`, `const`, and `var`.",
+        "answers": [
+          {"text": "`let` and `const` are block-scoped, `var` is function-scoped. `const` is for constants.", "correct": true},
+          {"text": "`let` is for variables that change, `const` and `var` are for constants.", "correct": false},
+          {"text": "There's no real difference; `let` and `const` are just modern versions of `var`.", "correct": false},
+          {"text": "`var` is block-scoped, while `let` and `const` are not scoped at all.", "correct": false}
+        ],
+        "explanation": "`var` is function-scoped or globally-scoped and can be re-declared and updated. `let` and `const` are block-scoped. `let` can be updated but not re-declared in the same scope, while `const` must be initialized at the time of declaration and cannot be updated or re-declared."
+      },
+      {
+        "question": "What is the purpose of the Array `reduce` method?",
+        "answers": [
+          {"text": "To reduce the array to a single value by executing a reducer function on each element", "correct": true},
+          {"text": "To cut down the size of the array by half", "correct": false},
+          {"text": "To filter out elements based on a condition", "correct": false},
+          {"text": "To find the element with the smallest value in an array", "correct": false}
+        ],
+        "explanation": "The `reduce` method executes a reducer function on each element of the array, resulting in a single output value. The reducer function takes four arguments: accumulator, current value, current index, and source array."
+      },
+      {
+        "question": "How can you achieve inheritance in JavaScript?",
+        "answers": [
+          {"text": "Using the `extends` keyword in class declarations", "correct": true},
+          {"text": "By copying properties and methods from one object to another", "correct": false},
+          {"text": "JavaScript does not support inheritance", "correct": false},
+          {"text": "Using the `inherit` method on objects", "correct": false}
+        ],
+        "explanation": "Inheritance in JavaScript can be achieved through Prototypal Inheritance or using ES6 classes with the `extends` keyword. This allows a class to inherit properties and methods from another class."
+      },
+      {
+        "question": "What is the `fetch` API in JavaScript?",
+        "answers": [
+          {"text": "A function to fetch data from the server synchronously", "correct": false},
+          {"text": "An API used to retrieve or send data over the network asynchronously", "correct": true},
+          {"text": "A storage API for storing data in the browser", "correct": false},
+          {"text": "A method for fetching elements from the DOM", "correct": false}
+        ],
+        "explanation": "The `fetch` API provides an interface for fetching resources (including across the network) asynchronously. It returns a Promise that resolves to the Response to that request, whether it is successful or not."
+      },
+      {
+        "question": "What is `NaN` in JavaScript?",
+        "answers": [
+          {"text": "A string indicating that a value is not a number", "correct": false},
+          {"text": "A value that represents 'Not a Number'", "correct": true},
+          {"text": "A function that checks if a value is not a number", "correct": false},
+          {"text": "An error type thrown when mathematical operations fail", "correct": false}
+        ],
+        "explanation": "`NaN` stands for 'Not-A-Number' and is a value representing a quantitative value that cannot be represented as a valid number. It is the result of undefined or unrepresentable mathematical operations."
+      },
+      {
+        "question": "Explain the `async` and `await` keywords in JavaScript.",
+        "answers": [
+          {"text": "Syntax for pausing and resuming asynchronous functions", "correct": true},
+          {"text": "Operators for concurrent JavaScript execution", "correct": false},
+          {"text": "Methods for synchronizing event handlers", "correct": false},
+          {"text": "Keywords for initiating web worker threads", "correct": false}
+        ],
+        "explanation": "`async` and `await` are used to simplify writing asynchronous code in JavaScript. An `async` function returns a Promise, and `await` is used inside an `async` function to pause the execution until the Promise is resolved."
+      },
+      {
+        "question": "What is the purpose of the `Array.filter()` method in JavaScript?",
+        "answers": [
+          {"text": "To execute a function on each element without changing the array", "correct": false},
+          {"text": "To create a new array with elements that pass a test provided by a function", "correct": true},
+          {"text": "To merge two or more arrays", "correct": false},
+          {"text": "To calculate a single value from an array", "correct": false}
+        ],
+        "explanation": "The `Array.filter()` method creates a new array with all elements that pass the test implemented by the provided function, allowing for the selective filtering of elements based on criteria."
+      },
+      {
+        "question": "How do you copy properties from one object to another in JavaScript?",
+        "answers": [
+          {"text": "Using the `Object.assign()` method", "correct": true},
+          {"text": "With the `Object.copy()` method", "correct": false},
+          {"text": "By using the spread operator `{...object}`", "correct": false},
+          {"text": "All of the above", "correct": false}
+        ],
+        "explanation": "`Object.assign()` is used to copy the values of all enumerable own properties from one or more source objects to a target object. The spread operator `{...object}` can also be used for a similar purpose in a more concise syntax."
+      },
+      {
+        "question": "What does the `Map` object in JavaScript do?",
+        "answers": [
+          {"text": "Automatically maps URLs to objects", "correct": false},
+          {"text": "Holds key-value pairs and remembers the original insertion order of the keys", "correct": true},
+          {"text": "Converts JSON data into JavaScript objects", "correct": false},
+          {"text": "Creates a new array populated with the results of calling a provided function on every element in the calling array", "correct": false}
+        ],
+        "explanation": "`Map` is a collection type that holds key-value pairs. Unlike objects, keys can be of any type, and the `Map` remembers the original insertion order of the keys."
+      },
+      {
+        "question": "How can you check if an object is an array?",
+        "answers": [
+          {"text": "Using `typeof`", "correct": false},
+          {"text": "Using `Array.isArray()`", "correct": true},
+          {"text": "Using `instanceof Array`", "correct": false},
+          {"text": "By checking if the object has a length property", "correct": false}
+        ],
+        "explanation": "`Array.isArray()` is the preferred method to check if an object is an array. It returns `true` if the object is an array, or `false` otherwise. `typeof` cannot be used to determine if an object is an array since it returns 'object' for arrays."
+      },
+      {
+        "question": "What is the output of `console.log('1' - - '1')`?",
+        "answers": [
+          {"text": "0", "correct": false},
+          {"text": "\"11\"", "correct": false},
+          {"text": "2", "correct": true},
+          {"text": "\"1-1\"", "correct": false}
+        ],
+        "explanation": "In this expression, JavaScript converts the string operands to numbers and performs subtraction. The `- -` between the two '1' strings is interpreted as subtraction of a negative number, effectively adding the two values together, resulting in 2."
+      },
+      {
+        "question": "What is the `Set` object in JavaScript?",
+        "answers": [
+          {"text": "A collection of indexed elements", "correct": false},
+          {"text": "A function for setting properties on objects", "correct": false},
+          {"text": "A collection of unique values", "correct": true},
+          {"text": "A method for defining object setters", "correct": false}
+        ],
+        "explanation": "`Set` is a built-in object that lets you store unique values of any type, whether primitive values or object references. It is an iterable collection."
+      },
+      {
+        "question": "What is the difference between the `splice()` and `slice()` methods in arrays?",
+        "answers": [
+          {"text": "`splice()` changes the original array, while `slice()` does not", "correct": true},
+          {"text": "`slice()` changes the original array, while `splice()` does not", "correct": false},
+          {"text": "Both methods modify the original array", "correct": false},
+          {"text": "Neither method modifies the original array", "correct": false}
+        ],
+        "explanation": "`splice()` is used to add/remove items to/from an array, and modifies the original array. `slice()`, on the other hand, returns a shallow copy of a portion of an array into a new array object and does not modify the original array."
+      },
+      {
+        "question": "How do you declare a class in JavaScript?",
+        "answers": [
+          {"text": "function MyClass() {}", "correct": false},
+          {"text": "class MyClass {}", "correct": true},
+          {"text": "var MyClass = class {}", "correct": false},
+          {"text": "create class MyClass {}", "correct": false}
+        ],
+        "explanation": "Classes in JavaScript are declared using the `class` keyword followed by the class name. This syntax is part of ES6 (ECMAScript 2015) and provides a more clear and concise way to create classes."
+      },
+      {
+        "question": "What does the `static` keyword do in a JavaScript class?",
+        "answers": [
+          {"text": "Makes a method or property belong to the class, rather than an instance of the class", "correct": true},
+          {"text": "Indicates that a property or method is constant and cannot be changed", "correct": false},
+          {"text": "Ensures that a class method is automatically called", "correct": false},
+          {"text": "Prevents a class from being instantiated", "correct": false}
+        ],
+        "explanation": "The `static` keyword defines a static method or property for a class. Static methods/properties are called on the class itself, not on instances of the class."
+      },
+      {
+        "question": "What is the use of the `Symbol` data type in JavaScript?",
+        "answers": [
+          {"text": "To create unique identifiers for object properties", "correct": true},
+          {"text": "To symbolize constants in an application", "correct": false},
+          {"text": "To generate cryptographically secure random numbers", "correct": false},
+          {"text": "To define symbols used in regular expressions", "correct": false}
+        ],
+        "explanation": "`Symbol` is a primitive data type introduced in ES6, used to create unique identifiers for object properties. The uniqueness of symbol values enables minimizing the risk of property name collisions."
+      },
+      {
+        "question": "How does JavaScript handle asynchronous operations?",
+        "answers": [
+          {"text": "Using callback functions", "correct": false},
+          {"text": "With Promises and async/await syntax", "correct": false},
+          {"text": "Through event loops", "correct": false},
+          {"text": "All of the above", "correct": true}
+        ],
+        "explanation": "JavaScript handles asynchronous operations using callback functions, Promises (with `.then()` and `.catch()` methods), async/await syntax for syntactic sugar over Promises, and the event loop mechanism."
+      },
+      {
+        "question": "What does the `default` keyword do in JavaScript import/export?",
+        "answers": [
+          {"text": "Specifies that a value should be the default when importing from a module", "correct": true},
+          {"text": "Sets a default value for a function parameter", "correct": false},
+          {"text": "Indicates the default case in a switch statement", "correct": false},
+          {"text": "Automatically imports the default library", "correct": false}
+        ],
+        "explanation": "In ES6 modules, the `default` keyword is used to specify the default export from a module. This allows you to have a single value that is most likely to be imported from a given file."
+      },
+      {
+        "question": "How do you make an HTTP request in JavaScript?",
+        "answers": [
+          {"text": "Using the `XMLHttpRequest` object", "correct": false},
+          {"text": "With the Fetch API", "correct": false},
+          {"text": "Using jQuery's `$.ajax` method", "correct": false},
+          {"text": "All of the above", "correct": true}
+        ],
+        "explanation": "JavaScript can make HTTP requests using several methods, including the older `XMLHttpRequest` object, the newer Fetch API for a more modern and powerful approach, and third-party libraries like jQuery's `$.ajax`."
+      },
+      {
+        "question": "What is a Web Worker in JavaScript?",
+        "answers": [
+          {"text": "A background thread for running scripts in web applications", "correct": true},
+          {"text": "A method for optimizing network requests", "correct": false},
+          {"text": "A tool for debugging web applications", "correct": false},
+          {"text": "A server-side JavaScript interpreter", "correct": false}
+        ],
+        "explanation": "Web Workers provide a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface."
+      },
+      {
+        "question": "What is the purpose of the `async` attribute in a `<script>` tag?",
+        "answers": [
+          {"text": "To specify that the script should run asynchronously with the rest of the page", "correct": true},
+          {"text": "To defer the execution of the script until the page has loaded", "correct": false},
+          {"text": "To force synchronous loading of the script", "correct": false},
+          {"text": "To indicate that the script contains asynchronous functions", "correct": false}
+        ],
+        "explanation": "The `async` attribute in a `<script>` tag indicates that the script should be executed asynchronously as soon as it is available, without blocking the Document Object Model (DOM) construction."
+      },
+      {
+        "question": "What is the `Document Object Model (DOM)` in web development?",
+        "answers": [
+          {"text": "The underlying code of a web page", "correct": false},
+          {"text": "A programming interface for HTML and XML documents", "correct": true},
+          {"text": "The design and layout of a web page", "correct": false},
+          {"text": "A database of web documents", "correct": false}
+        ],
+        "explanation": "The DOM is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects; that way, programming languages can interact with the page."
+      },
+      {
+        "question": "What is the difference between `localStorage` and `sessionStorage` in web storage API?",
+        "answers": [
+          {"text": "`localStorage` is permanent, `sessionStorage` is cleared when the session ends", "correct": true},
+          {"text": "`localStorage` is faster than `sessionStorage`", "correct": false},
+          {"text": "`sessionStorage` can store more data than `localStorage`", "correct": false},
+          {"text": "There is no difference; they are just two different names for the same functionality", "correct": false}
+        ],
+        "explanation": "`localStorage` provides a way to store data across browser sessions. Data stored in `localStorage` persists until explicitly deleted. In contrast, data in `sessionStorage` is cleared when the page session ends (when the tab is closed)."
+      },
+      {
+        "question": "How can you dynamically import a module in JavaScript?",
+        "answers": [
+          {"text": "Using `require()`", "correct": false},
+          {"text": "Using `import()` with the module path", "correct": true},
+          {"text": "Using `include()` with the module path", "correct": false},
+          {"text": "Using `loadModule()`", "correct": false}
+        ],
+        "explanation": "Dynamic imports in JavaScript can be achieved using the `import()` function, which returns a promise. This allows you to load modules dynamically and use them when needed."
+      },
+      {
+        "question": "How do you find the length of an array in JavaScript?",
+        "answers": [
+          {"text": "array.length()", "correct": false},
+          {"text": "array.size", "correct": false},
+          {"text": "array.length", "correct": true},
+          {"text": "length(array)", "correct": false}
+        ],
+        "explanation": "The length of an array in JavaScript is found using the `.length` property, not with a method, hence `array.length` is correct."
+      },
+      {
+        "question": "Which method can be used to join elements of an array into a string?",
+        "answers": [
+          {"text": "array.concat()", "correct": false},
+          {"text": "array.join()", "correct": true},
+          {"text": "array.combine()", "correct": false},
+          {"text": "array.stringify()", "correct": false}
+        ],
+        "explanation": "The `array.join()` method joins all elements of an array into a string. You can optionally specify a separator; the default is a comma."
+      },
+      {
+        "question": "What does the `document.querySelector()` method return?",
+        "answers": [
+          {"text": "All elements that match a specified CSS selector(s)", "correct": false},
+          {"text": "The first element that matches a specified CSS selector(s)", "correct": true},
+          {"text": "A boolean indicating if any element matches the specified CSS selector(s)", "correct": false},
+          {"text": "The last element that matches a specified CSS selector(s)", "correct": false}
+        ],
+        "explanation": "`document.querySelector()` returns the first Element within the document that matches the specified selector, or group of selectors. If no matches are found, `null` is returned."
+      },
+      {
+        "question": "Which object is the top-level object in a browser environment?",
+        "answers": [
+          {"text": "document", "correct": false},
+          {"text": "window", "correct": true},
+          {"text": "HTMLDocument", "correct": false},
+          {"text": "Screen", "correct": false}
+        ],
+        "explanation": "In a browser environment, the `window` object is the top-level object. It represents the window containing the DOM document and serves as a global object for JavaScript code."
+      },
+      {
+        "question": "How do you declare a constant in JavaScript?",
+        "answers": [
+          {"text": "var CONSTANT_NAME;", "correct": false},
+          {"text": "const CONSTANT_NAME;", "correct": true},
+          {"text": "let CONSTANT_NAME;", "correct": false},
+          {"text": "constant CONSTANT_NAME;", "correct": false}
+        ],
+        "explanation": "Constants in JavaScript are declared using the `const` keyword. Once assigned, their value cannot be changed."
+      },
+      {
+        "question": "Which statement about arrow functions is correct?",
+        "answers": [
+          {"text": "Arrow functions do not have their own `this` context.", "correct": true},
+          {"text": "Arrow functions can be used as constructors.", "correct": false},
+          {"text": "Arrow functions have the `arguments` object.", "correct": false},
+          {"text": "Arrow functions are hoisted like function declarations.", "correct": false}
+        ],
+        "explanation": "Arrow functions do not have their own `this` context but inherit `this` from the parent scope where the arrow function is defined. They cannot be used as constructors, and they do not have their own `arguments` object."
+      },
+      {
+        "question": "What will `console.log(typeof null)` output?",
+        "answers": [
+          {"text": "'null'", "correct": false},
+          {"text": "'object'", "correct": true},
+          {"text": "'undefined'", "correct": false},
+          {"text": "'type'", "correct": false}
+        ],
+        "explanation": "`console.log(typeof null)` will output `'object'`. This is considered one of JavaScript's many quirks, as `null` is not actually an object but a primitive value."
+      },
+      {
+        "question": "How do you stop the default action of an event in JavaScript?",
+        "answers": [
+          {"text": "event.preventDefault()", "correct": true},
+          {"text": "event.stopAction()", "correct": false},
+          {"text": "event.stopPropagation()", "correct": false},
+          {"text": "event.cancel()", "correct": false}
+        ],
+        "explanation": "`event.preventDefault()` is the method used to prevent the default action of an event from occurring, such as preventing a form from submitting."
+      },
+      {
+        "question": "Which method is used to round a number to the nearest integer in JavaScript?",
+        "answers": [
+          {"text": "Math.round()", "correct": true},
+          {"text": "Math.ceil()", "correct": false},
+          {"text": "Math.floor()", "correct": false},
+          {"text": "Number.round()", "correct": false}
+        ],
+        "explanation": "`Math.round()` is the method used to round a number to the nearest integer in JavaScript. `Math.ceil()` rounds up, while `Math.floor()` rounds down."
+      },
+      {
+        "question": "Which of these values is considered falsy in JavaScript?",
+        "answers": [
+          {"text": "0", "correct": true},
+          {"text": "'0'", "correct": false},
+          {"text": "{}", "correct": false},
+          {"text": "[]", "correct": false}
+        ],
+        "explanation": "In JavaScript, the number `0` is considered falsy. Other falsy values include `''` (empty string), `NaN`, `null`, `undefined`, and of course `false` itself."
+      },
+      {
+        "question": "What is the output of `console.log(1 + '2' + 3)`?",
+        "answers": [
+          {"text": "'123'", "correct": true},
+          {"text": "6", "correct": false},
+          {"text": "'33'", "correct": false},
+          {"text": "None of the above", "correct": false}
+        ],
+        "explanation": "JavaScript performs string concatenation when one of the operands is a string. The number `1` is concatenated with the string '2' to form '12', which is then concatenated with the number `3` to result in '123'."
+      },
+      {
+        "question": "How do you remove an element from the DOM?",
+        "answers": [
+          {"text": "element.remove()", "correct": true},
+          {"text": "document.removeElement(element)", "correct": false},
+          {"text": "document.removeChild(element)", "correct": false},
+          {"text": "element.delete()", "correct": false}
+        ],
+        "explanation": "`element.remove()` directly removes the element from the DOM. `document.removeChild(element)` is not correct; the method should be called on the parent node as `parentNode.removeChild(childNode)`."
+      },
+      {
+        "question": "What is the correct way to create a new Date object for January 1, 2020?",
+        "answers": [
+          {"text": "new Date(2020, 1, 1)", "correct": false},
+          {"text": "new Date(2020, 0, 1)", "correct": true},
+          {"text": "new Date('1 January 2020')", "correct": false},
+          {"text": "new Date('2020-01-01')", "correct": false}
+        ],
+        "explanation": "JavaScript counts months from 0 to 11. January is 0. Hence, `new Date(2020, 0, 1)` correctly represents January 1, 2020. The other options would either result in a different date or rely on date string parsing, which is not the focus here."
+      },
+      {
+        "question": "Which method would you use to send a request to a server from a client in JavaScript?",
+        "answers": [
+          {"text": "XMLHttpRequest", "correct": false},
+          {"text": "fetch()", "correct": false},
+          {"text": "axios.get()", "correct": false},
+          {"text": "All of the above", "correct": true}
+        ],
+        "explanation": "All the mentioned methods (`XMLHttpRequest`, `fetch()`, and `axios.get()`) can be used to send requests to a server from a client in JavaScript. `fetch()` is native to modern browsers, while `axios` is a third-party library that simplifies HTTP requests."
+      },
+      {
+        "question": "What will `console.log(typeof undefined)` output?",
+        "answers": [
+          {"text": "'undefined'", "correct": true},
+          {"text": "'null'", "correct": false},
+          {"text": "'object'", "correct": false},
+          {"text": "'type'", "correct": false}
+        ],
+        "explanation": "`console.log(typeof undefined)` will output `'undefined'`. The `typeof` operator returns a string indicating the type of the unevaluated operand, and `undefined` is its own type."
+      },
+      {
+        "question": "How do you convert a JSON string to a JavaScript object?",
+        "answers": [
+          {"text": "JSON.parse(jsonString)", "correct": true},
+          {"text": "JSON.stringify(jsonString)", "correct": false},
+          {"text": "Object.parse(jsonString)", "correct": false},
+          {"text": "Object.fromString(jsonString)", "correct": false}
+        ],
+        "explanation": "`JSON.parse(jsonString)` is used to parse a JSON string, constructing the JavaScript value or object described by the string. `JSON.stringify()` does the opposite, converting a JavaScript object to a JSON string."
+      },
+      {
+        "question": "What is the purpose of `try...catch` statement in JavaScript?",
+        "answers": [
+          {"text": "To handle potential errors in a block of code", "correct": true},
+          {"text": "To test a block of code for performance issues", "correct": false},
+          {"text": "To repeatedly execute a block of code until an error occurs", "correct": false},
+          {"text": "To document known errors in a codebase", "correct": false}
+        ],
+        "explanation": "The `try...catch` statement is used to catch exceptions that are thrown in a try block. It allows you to handle errors gracefully without stopping the execution of your script."
+      },
+      {
+        "question": "What does the `finally` block do in a `try...catch` statement?",
+        "answers": [
+          {"text": "Executes code after the `try` block regardless of the result", "correct": true},
+          {"text": "Cleans up resources used in the `try` block", "correct": false},
+          {"text": "Executes only if an error was caught in the `catch` block", "correct": false},
+          {"text": "Retries the execution of the `try` block", "correct": false}
+        ],
+        "explanation": "The `finally` block executes after the `try` and `catch` blocks have completed, regardless of whether an exception was thrown or caught. It is typically used for cleaning up resources."
+      },
+      {
+        "question": "How do you create an event listener in JavaScript?",
+        "answers": [
+          {"text": "element.event('click', functionName)", "correct": false},
+          {"text": "element.addEventListener('click', functionName)", "correct": true},
+          {"text": "element.onClick = functionName", "correct": false},
+          {"text": "element.trigger('click', functionName)", "correct": false}
+        ],
+        "explanation": "The correct way to create an event listener in JavaScript is using the `element.addEventListener('click', functionName)` method. This method attaches an event handler to the specified element without overwriting existing event handlers."
+      },
+      {
+        "question": "What is the main difference between `localStorage` and `sessionStorage`?",
+        "answers": [
+          {"text": "`localStorage` data persists until explicitly deleted, while `sessionStorage` data is cleared when the page session ends", "correct": true},
+          {"text": "`sessionStorage` is more secure than `localStorage`", "correct": false},
+          {"text": "`localStorage` has a larger storage capacity", "correct": false},
+          {"text": "`sessionStorage` can store data across multiple sessions", "correct": false}
+        ],
+        "explanation": "The main difference between `localStorage` and `sessionStorage` lies in their persistence and scope. `localStorage` data persists across sessions, whereas `sessionStorage` data is limited to the current session and is cleared when the tab or browser is closed."
+      },
+      {
+        "question": "Which method is used to serialize an object into a JSON string?",
+        "answers": [
+          {"text": "JSON.stringify(object)", "correct": true},
+          {"text": "JSON.parse(object)", "correct": false},
+          {"text": "Object.toString()", "correct": false},
+          {"text": "Object.serialize()", "correct": false}
+        ],
+        "explanation": "`JSON.stringify(object)` converts a JavaScript object into a JSON string. This method is commonly used to send data as a string over a network or to save it in a format that can be stored and read easily."
+      },
+      {
+        "question": "How do you access the first element of an array?",
+        "answers": [
+          {"text": "array[0]", "correct": true},
+          {"text": "array[1]", "correct": false},
+          {"text": "array.first()", "correct": false},
+          {"text": "array.at(0)", "correct": false}
+        ],
+        "explanation": "In JavaScript, arrays are zero-indexed, meaning the first element of an array is accessed using `array[0]`. This syntax provides the most direct way to access the first element."
+      },
+      {
+        "question": "Which statement creates a new object using the 'Person' constructor?",
+        "answers": [
+          {"text": "var person = new Person();", "correct": true},
+          {"text": "var person = Person();", "correct": false},
+          {"text": "var person = construct Person();", "correct": false},
+          {"text": "var person = create Person();", "correct": false}
+        ],
+        "explanation": "To create a new instance of an object in JavaScript using a constructor function, the `new` keyword is used followed by the constructor function name, as in `var person = new Person();`."
+      },
+      {
+        "question": "Which operator is used to check both the value and type of a variable?",
+        "answers": [
+          {"text": "==", "correct": false},
+          {"text": "===", "correct": true},
+          {"text": "=", "correct": false},
+          {"text": "!==", "correct": false}
+        ],
+        "explanation": "The strict equality operator `===` checks whether its two operands are equal, both in value and in type. This is different from the loose equality operator `==`, which performs type coercion if needed."
+      },
+      {
+        "question": "What will `console.log(typeof [])` output?",
+        "answers": [
+          {"text": "'object'", "correct": true},
+          {"text": "'array'", "correct": false},
+          {"text": "'list'", "correct": false},
+          {"text": "'undefined'", "correct": false}
+        ],
+        "explanation": "In JavaScript, `typeof []` (an array) will return `'object'` because arrays in JavaScript are actually a type of object."
+      },
+      {
+        "question": "Which method removes the last element from an array and returns that element?",
+        "answers": [
+          {"text": "pop()", "correct": true},
+          {"text": "push()", "correct": false},
+          {"text": "last()", "correct": false},
+          {"text": "remove()", "correct": false}
+        ],
+        "explanation": "The `pop()` method removes the last element from an array and returns that element. This method changes the length of the array."
+      },
+      {
+        "question": "How can you detect the client's browser name in JavaScript?",
+        "answers": [
+          {"text": "navigator.appName", "correct": true},
+          {"text": "browser.name", "correct": false},
+          {"text": "client.navName", "correct": false},
+          {"text": "window.browser", "correct": false}
+        ],
+        "explanation": "`navigator.appName` provides the name of the browser. The `navigator` object contains information about the browser."
+      },
+      {
+        "question": "What will `console.log(1 + '2' + '2')` output?",
+        "answers": [
+          {"text": "'5'", "correct": false},
+          {"text": "'122'", "correct": true},
+          {"text": "'32'", "correct": false},
+          {"text": "NaN", "correct": false}
+        ],
+        "explanation": "JavaScript performs concatenation when one of the operands is a string. The number `1` is concatenated with the string '2' to form '12', which is then concatenated with '2', resulting in '122'."
+      },
+      {
+        "question": "Which method can be used to replace parts of a string?",
+        "answers": [
+          {"text": "string.replace(oldPart, newPart)", "correct": true},
+          {"text": "string.exchange(oldPart, newPart)", "correct": false},
+          {"text": "string.swap(oldPart, newPart)", "correct": false},
+          {"text": "string.change(oldPart, newPart)", "correct": false}
+        ],
+        "explanation": "The `string.replace(oldPart, newPart)` method is used to replace parts of a string with some other text. This method searches a string for a specified value, or a regular expression, and returns a new string where the specified values are replaced."
+      },
+      {
+        "question": "How do you declare a JavaScript variable?",
+        "answers": [
+          {"text": "v name;", "correct": false},
+          {"text": "variable name;", "correct": false},
+          {"text": "var name;", "correct": true},
+          {"text": "let name;", "correct": false}
+        ],
+        "explanation": "JavaScript variables can be declared using `var`, `let`, or `const`. The correct syntax for declaring a variable with `var` is `var name;`. `let` and `const` are also valid keywords introduced in ES6 for block-scoped variables."
+      },
+      {
+        "question": "Which event occurs when the user clicks on an HTML element?",
+        "answers": [
+          {"text": "onchange", "correct": false},
+          {"text": "onclick", "correct": true},
+          {"text": "onmouseover", "correct": false},
+          {"text": "onmouseclick", "correct": false}
+        ],
+        "explanation": "The `onclick` event occurs when the user clicks on an HTML element. It is one of the most commonly used events in web pages."
+      },
+      {
+        "question": "How do you declare a constant in JavaScript?",
+        "answers": [
+          {"text": "const name;", "correct": true},
+          {"text": "constant name;", "correct": false},
+          {"text": "let name;", "correct": false},
+          {"text": "var name;", "correct": false}
+        ],
+        "explanation": "A constant in JavaScript is declared using the `const` keyword. Constants are block-scoped, much like variables defined using the `let` keyword. The value of a constant cannot change through re-assignment, and it can't be redeclared."
+      },
+      {
+        "question": "How do you round the number 7.25, to the nearest integer?",
+        "answers": [
+          {"text": "Math.rnd(7.25)", "correct": false},
+          {"text": "Math.round(7.25)", "correct": true},
+          {"text": "round(7.25)", "correct": false},
+          {"text": "Math.floor(7.25)", "correct": false}
+        ],
+        "explanation": "`Math.round()` is the correct method to round a number to the nearest integer in JavaScript. `Math.round(7.25)` returns 7."
+      },
+      {
+        "question": "How do you find the number with the highest value of x and y?",
+        "answers": [
+          {"text": "Math.ceil(x, y)", "correct": false},
+          {"text": "Math.max(x, y)", "correct": true},
+          {"text": "top(x, y)", "correct": false},
+          {"text": "Math.high(x, y)", "correct": false}
+        ],
+        "explanation": "`Math.max(x, y)` is used to find the highest value between x and y. `Math.ceil()` rounds a number up to the next largest integer, which is not the correct method for finding the maximum of two values."
+      },
+      {
+        "question": "What is the correct JavaScript syntax to change the content of the HTML element below?\n<p id='demo'>This is a demonstration.</p>",
+        "answers": [
+          {"text": "document.getElementByName('p').innerHTML = 'Hello World!';", "correct": false},
+          {"text": "document.getElementById('demo').innerHTML = 'Hello World!';", "correct": true},
+          {"text": "#demo.innerHTML = 'Hello World!';", "correct": false},
+          {"text": "document.getElement('p').innerHTML = 'Hello World!';", "correct": false}
+        ],
+        "explanation": "To change the content of an HTML element, you use `document.getElementById()` to select the element by its ID and then use `.innerHTML` to set its content. The correct syntax is `document.getElementById('demo').innerHTML = 'Hello World!';`."
+      },
+      {
+        "question": "Where is the correct place to insert a JavaScript?",
+        "answers": [
+          {"text": "The <body> section", "correct": false},
+          {"text": "Both the <head> section and the <body> section are correct", "correct": true},
+          {"text": "The <head> section", "correct": false},
+          {"text": "At the end of the document", "correct": false}
+        ],
+        "explanation": "JavaScript can be placed in both the `<head>` and the `<body>` sections of an HTML document. However, it is best practice to place scripts at the bottom of the `<body>` to improve page load times."
+      },
+      {
+        "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
+        "answers": [
+          {"text": "<script href='xxx.js'>", "correct": false},
+          {"text": "<script name='xxx.js'>", "correct": false},
+          {"text": "<script src='xxx.js'>", "correct": true},
+          {"text": "<script file='xxx.js'>", "correct": false}
+        ],
+        "explanation": "The correct syntax to include an external JavaScript file is using the `<script src='xxx.js'>` tag. This tells the browser to execute the script found at the specified `src` URL."
+      },
+      {
+        "question": "The external JavaScript file must contain the <script> tag.",
+        "answers": [
+          {"text": "True", "correct": false},
+          {"text": "False", "correct": true},
+          {"text": "Depends on the document type", "correct": false},
+          {"text": "Only if the file is local", "correct": false}
+        ],
+        "explanation": "False. The external JavaScript file should not contain the `<script>` tag. The `<script>` tag is used in the HTML document to link to the external JavaScript file."
+      },
+      {
+        "question": "How do you write a conditional statement for executing some statements only if 'i' is NOT equal to 5?",
+        "answers": [
+          {"text": "if (i != 5)", "correct": true},
+          {"text": "if i =! 5 then", "correct": false},
+          {"text": "if i <> 5", "correct": false},
+          {"text": "if (i <> 5)", "correct": false}
+        ],
+        "explanation": "The correct syntax for writing a conditional statement in JavaScript to check if 'i' is not equal to 5 is `if (i != 5)`. This uses the inequality operator `!=` to compare 'i' to 5."
+      },
+      {
+        "question": "How does a 'for' loop start?",
+        "answers": [
+          {"text": "for (i <= 5; i++)", "correct": false},
+          {"text": "for (i = 0; i <= 5)", "correct": false},
+          {"text": "for (i = 0; i <= 5; i++)", "correct": true},
+          {"text": "for i = 1 to 5", "correct": false}
+        ],
+        "explanation": "The correct syntax for starting a 'for' loop in JavaScript is `for (i = 0; i <= 5; i++)`. This sets up a loop that starts with `i = 0`, continues as long as `i` is less than or equal to 5, and increments `i` by 1 after each loop iteration."
+      }
+    
+    
+    
   ]
   

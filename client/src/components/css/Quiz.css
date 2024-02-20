@@ -10,25 +10,28 @@
   --hue-wrong: 0;
   --hue-correct: 145;
 }
-
+button.btn {
+  font-size: 24px;
+}
+/* 
 body {
     padding: 0;
-    margin: 0;
+    margin: 0px;
     display: flex;
-    flex-direction: column; /* Align items in a column */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align content to the top */
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
     width: 100vw;
-    min-height: 100vh; /* Ensure body takes at least the viewport height */
+    min-height: 100vh; 
     background-color: hsl(var(--hue), 50%, 50%);
-    overflow-x: hidden; /* Hide horizontal overflow */
-    overflow-y: auto; /* Enable vertical scrolling */
-  }
+    overflow-x: hidden; 
+    overflow-y: auto; 
+  }  */ 
 
   .content {
-    max-width: 800px; /* or whatever max width you prefer */
-    width: 100%;
-    margin: 0 auto; /* Center content */
+  /*  max-width: 800px; */
+    width: 80%;
+    margin: 0 auto;
   }
 
 body.correct {
@@ -40,18 +43,7 @@ body.wrong {
 }
 
 
-.container {
-    width: 800px;
-    max-width: 80%;
-    /* Set a max-height to make sure content is scrollable */
-    max-height: 90vh; /* Adjust based on your header/footer size */
-    background-color: white;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px 2px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    margin-top: 20px; /* Adjust or remove based on your design */
-  }
+/* s */
 .btn-grid {
   display: grid;
   grid-template-columns: repeat(2, auto);
@@ -159,4 +151,18 @@ h2, h3 {padding: 5px;}
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.content {
+  text-align: center;
+  padding: 20px;
+}
+input[type="text"] {
+  font-size: 24px;
+}
+button.save {
+  font-size: 24px;
+}
+.break {
+  font-size: 20px;
+  font-weight: 600;
 }

@@ -341,8 +341,13 @@ nav.Header_header__5xukw.bg-body-tertiary.navbar.navbar-expand-lg.navbar-light.s
 }
 button.btn {
   background: #f3e687;
+  border-color: #000;
 }
-
+button.btn:hover {
+  color: #fff;
+  background-color: green;
+  border-color: #f0db4f;
+}
 
 /*****************/
 *,
@@ -512,4 +517,7 @@ button.save {
 .break {
   font-size: 20px;
   font-weight: 600;
+}
+footer.Footer_footer__EwVYi.mt-auto.py-3.bg-dark.text-white {
+  background: black!important;
 }

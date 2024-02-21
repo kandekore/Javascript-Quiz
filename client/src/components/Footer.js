@@ -21,9 +21,9 @@ const Footer = () => {
             <p className="center">Built using the M.E.R.N Stack</p>
           </Col>
           <Col xs={12} md={4} className="text-center text-lg-end">
-            <SocialIcon fgColor="#f0db4f" bgColor="#000" rel="noreferrer" network="github"  target="_blank" url="https://github.com/kandekore"/>
-            <SocialIcon fgColor="#f0db4f" bgColor="#000" rel="noreferrer" network="x"  target="_blank" url="https://x.com/kandekore"/>
-            <SocialIcon fgColor="#f0db4f" bgColor="#000" rel="noreferrer" network="linkedin"  target="_blank" url="https://www.linkedin.com/in/dkandekore"/>
+            <SocialIcon fgColor="#f7df1c" bgColor="#000" rel="noreferrer" network="github"  target="_blank" url="https://github.com/kandekore"/>
+            <SocialIcon fgColor="#f7df1c" bgColor="#000" rel="noreferrer" network="x"  target="_blank" url="https://x.com/kandekore"/>
+            <SocialIcon fgColor="#f7df1c" bgColor="#000" rel="noreferrer" network="linkedin"  target="_blank" url="https://www.linkedin.com/in/dkandekore"/>
           </Col>
         </Row>
       </Container>

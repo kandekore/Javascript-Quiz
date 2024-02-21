@@ -116,12 +116,12 @@ div#navbarScroll {
 .activeLink {
   color: #2cf708 !important;
   text-shadow: 1px 1px #000;
-  background-color: #f0db4f;
+  background-color: #f7df1c;
   border-radius: 5px;
 }
-.bg-body-tertiary {background-color: #f0db4f!important;}
+.bg-body-tertiary {background-color: #f7df1c!important;}
 .accordion-button:not(.collapsed) {
-  background-color: #f0db4f!important;
+  background-color: #f7df1c!important;
 }
 .accordion {
  --bs-accordion-btn-focus-border-color: #000;
@@ -131,10 +131,10 @@ div#navbarScroll {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
-  text-shadow: 1px 1px #efdb50;
+  text-shadow: 1px 1px #f7df1c;
 }
 .h2, h2 {
-  text-shadow: 1px 1px #efdb50;
+  text-shadow: 1px 1px #f7df1c;
   text-align: center;
 }
 .bg-dark {
@@ -337,16 +337,16 @@ button.save {
   font-weight: 600;
 }
 nav.Header_header__5xukw.bg-body-tertiary.navbar.navbar-expand-lg.navbar-light.sticky-top {
-  background: #f3e687!important;
+  background: #f7df1c!important;
 }
 button.btn {
-  background: #f3e687;
+  background: #f7df1c;
   border-color: #000;
 }
 button.btn:hover {
   color: #fff;
   background-color: green;
-  border-color: #f0db4f;
+  border-color: #f7df1c;
 }
 
 /*****************/

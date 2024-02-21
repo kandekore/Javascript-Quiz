@@ -1,7 +1,7 @@
 require('dotenv').config(); 
 const { connect, connection } = require("mongoose");
 
-const mongoDBUri = process.env.MONGODB_URI || "mongodb://127.0.0.1/quiz";
+const mongoDBUri = process.env.MONGODB_URI;
 
 connect(mongoDBUri, {
   useNewUrlParser: true,

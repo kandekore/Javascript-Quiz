@@ -17,7 +17,6 @@ function Header() {
           <Nav className="me-auto">
             <NavLink to="/" className={({ isActive }) => isActive ? styles.activeLink + ' nav-link' : 'nav-link'}>Home</NavLink>
             <NavLink to="/high-scores" className={({ isActive }) => isActive ? `${styles.activeLink} nav-link` : "nav-link"}>High Scores</NavLink>
-            <NavLink to="/operators" className={({ isActive }) => isActive ? `${styles.activeLink} nav-link` : "nav-link"}>Reference</NavLink>
              </Nav>
           
         </Navbar.Collapse> 

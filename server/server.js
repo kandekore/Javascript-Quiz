@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-require('./config/connection');
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./schemas/typeDefs');
 const resolvers = require('./schemas/resolvers');
+const mongoose = require('mongoose');
+
+// Import environment variables from .env file
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -12,15 +15,36 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+// Connect to MongoDB
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/yourDatabaseName'; // Update this line
+console.log("MongoDB URI:", mongoUri);
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected...'))
+  .catch(err => console.error('Could not connect to MongoDB...', err));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
 });
+
+async function startApolloServer() {
+  await server.start();
+  server.applyMiddleware({ app });
+
+  // Serve static files from the React app
+  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  // The "catchall" handler for any request that doesn't match one above, send back React's index.html file.
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+}
+
+startApolloServer();
 
 const Score = require('./models/Scores');
 
-
+// POST endpoint to save a score
 app.post('/api/scores', async (req, res) => {
     if (!req.body.username || req.body.score == null) {
         return res.status(400).json({ error: 'Missing username or score' });
@@ -35,7 +59,8 @@ app.post('/api/scores', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error', details: error.message });
     }
 });
-  
+
+// GET endpoint to fetch high scores
 app.get('/api/scores/highscores', async (req, res) => {
     try {
         const highScores = await Score.find({}).sort({score: -1}).limit(10);
@@ -46,10 +71,6 @@ app.get('/api/scores/highscores', async (req, res) => {
     }
 });
 
-// Setup ApolloServer
-const server = new ApolloServer({ typeDefs, resolvers });
-
-server.start().then(() => {
-    server.applyMiddleware({ app });
-    app.listen({ port }, () => console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`));
+app.listen({ port }, () => {
+  console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
 });

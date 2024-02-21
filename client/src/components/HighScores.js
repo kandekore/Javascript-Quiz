@@ -7,7 +7,7 @@ function HighScores() {
 
   useEffect(() => {
     async function fetchHighScores() {
-      const response = await fetch('http://localhost:4000/api/scores/highscores');
+      const response = await fetch('https://jsquiz-306434aa7ec8.herokuapp.com/api/scores/highscores');
       const data = await response.json();
       setHighScores(data);
     }

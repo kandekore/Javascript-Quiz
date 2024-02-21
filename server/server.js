@@ -12,7 +12,7 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
-aapp.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));

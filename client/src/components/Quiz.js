@@ -149,7 +149,7 @@
         <h2>Welcome to the Ultimate JavaScript Quiz!</h2>
         <strong>What you need to know:</strong> 
 
-<ol><li>KFace a mix of questions covering a wide range of JavaScript topics.</li>
+<ol><li>Face a mix of questions covering a wide range of JavaScript topics.</li>
 <li>Keep an eye on the timer! You've got limited time to prove your expertise.</li>
 <li>Wrong answers? They come with a twist – a 10-second penalty to keep you on your toes.</li>
 <li>Correct answers boost your score, and detailed explanations help you learn as you go.</li></ol>

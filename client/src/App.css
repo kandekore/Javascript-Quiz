@@ -521,3 +521,22 @@ button.save {
 footer.Footer_footer__EwVYi.mt-auto.py-3.bg-dark.text-white {
   background: black!important;
 }
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .btn-grid {
+    grid-template-columns: 1fr; /* Makes buttons stack vertically */
+  }
+}
+
+.welcome-text h2,
+.welcome-text p {
+  text-align: center;
+  margin-bottom: 20px;
+}

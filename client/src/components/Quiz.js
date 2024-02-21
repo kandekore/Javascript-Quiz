@@ -143,6 +143,7 @@
 
     return (
       <div className='content'>
+      
         {isQuizStarted ? (
           <>
             <div className="countdown-grid">

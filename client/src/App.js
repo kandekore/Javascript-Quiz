@@ -17,8 +17,8 @@ function App() {
 
   return (
     <>
-    <Header />
     <Router>
+    <Header />
     <div className='main-content'>
       <Routes>
         <Route path="/" element={<Quiz onQuizComplete={onQuizComplete} />} />

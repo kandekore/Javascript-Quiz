@@ -7,17 +7,35 @@ function HighScores() {
     const navigate = useNavigate(); // Create navigate function
 
     useEffect(() => {
-        // Fetch high scores from the backend
         const fetchHighScores = async () => {
+            const query = JSON.stringify({
+                query: `{
+                    highScores {
+                        username
+                        score
+                    }
+                }`
+            });
+
             try {
-                const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000'; // Dynamic API URL
-                const response = await fetch(`${apiUrl}/api/scores/highscores`);
-                if (response.ok) {
-                    const scores = await response.json();
-                    setHighScores(scores);
+                const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000'; // Dynamic API URL for GraphQL endpoint
+                const response = await fetch(`${apiUrl}/graphql`, { 
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: query,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const jsonResponse = await response.json();
+                if (jsonResponse.data) {
+                    setHighScores(jsonResponse.data.highScores);
                 } else {
-                    console.error("Failed to fetch high scores");
-                    setError('Failed to fetch high scores.');
+                    throw new Error('Failed to load high scores');
                 }
             } catch (error) {
                 console.error("Error fetching high scores:", error);

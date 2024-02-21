@@ -144,22 +144,29 @@
     return (
       <div className='content'>
       
-        {isQuizStarted ? (
-          <>
-            <div className="countdown-grid">
-              <h2>Time Left: {timeLeft} seconds</h2>
-            </div>
-            <div id="question-container">
-              <div id="question">{questions[currentQuestionIndex].question}</div>
-              <div id="answer-buttons" className="btn-grid">
-                {questions[currentQuestionIndex].answers.map((answer, index) => (
-                  <button key={index} className="btn" onClick={() => handleAnswer(answer)}>
-                    {answer.text}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </>
+      {!isQuizStarted && !reviewMode && (
+      <div className="welcome-text">
+        <h2>Welcome to the Ultimate JavaScript Quiz!</h2>
+        <p>Test your skills and challenge yourself. Press the <strong>Start Quiz</strong> button when you're ready!</p>
+      </div>
+    )}
+
+    {isQuizStarted ? (
+      <>
+        <div className="countdown-grid">
+          <h2>Time Left: {timeLeft} seconds</h2>
+        </div>
+        <div id="question-container">
+          <div id="question">{questions[currentQuestionIndex].question}</div>
+          <div id="answer-buttons" className="btn-grid">
+            {questions[currentQuestionIndex].answers.map((answer, index) => (
+              <button key={index} className="btn" onClick={() => handleAnswer(answer)}>
+                {answer.text}
+              </button>
+            ))}
+          </div>
+        </div>
+      </>
         ) : reviewMode ? (
           <div>
             <h2>Your Score: {score}</h2>

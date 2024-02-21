@@ -7,13 +7,21 @@ function HighScores() {
 
   useEffect(() => {
     async function fetchHighScores() {
-      const response = await fetch('https://jsquiz-306434aa7ec8.herokuapp.com/api/scores/highscores');
-      const data = await response.json();
-      setHighScores(data);
+      try {
+        const response = await fetch('https://jsquiz-306434aa7ec8.herokuapp.com/api/scores/highscores');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setHighScores(data);
+      } catch (error) {
+        console.error("Failed to fetch high scores:", error);
+      }
     }
-
+  
     fetchHighScores();
   }, []);
+  
 
   return (
     <div className="container mt-5">

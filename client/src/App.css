@@ -540,3 +540,7 @@ footer.Footer_footer__EwVYi.mt-auto.py-3.bg-dark.text-white {
   text-align: center;
   margin-bottom: 20px;
 }
+li {
+  list-style: none;
+  padding-top: 10px;
+}

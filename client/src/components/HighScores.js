@@ -1,47 +1,77 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 function HighScores() {
     const [highScores, setHighScores] = useState([]);
-    const navigate = useNavigate(); 
+    const [error, setError] = useState('');
+    const navigate = useNavigate(); // Create navigate function
 
     useEffect(() => {
-   
         const fetchHighScores = async () => {
+            const query = JSON.stringify({
+                query: `{
+                    highScores {
+                        username
+                        score
+                    }
+                }`
+            });
+
             try {
-                const response = await fetch('http://localhost:4000/api/scores/highscores');
-                if (response.ok) {
-                    const scores = await response.json();
-                    setHighScores(scores);
+                const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000'; // Dynamic API URL for GraphQL endpoint
+                const response = await fetch(`${apiUrl}/graphql`, { 
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: query,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const jsonResponse = await response.json();
+                if (jsonResponse.data) {
+                    setHighScores(jsonResponse.data.highScores);
                 } else {
-                    console.error("Failed to fetch high scores");
+                    throw new Error('Failed to load high scores');
                 }
             } catch (error) {
                 console.error("Error fetching high scores:", error);
+                setError('Error fetching high scores.');
             }
         };
 
         fetchHighScores();
     }, []);
 
- 
-    const handleRestartQuiz = () => {
-        navigate('/'); 
-    };
-
     return (
-        <div>
-            <h2>High Scores</h2>
-            {highScores.length > 0 ? (
-                <ul>
+        <div className="container mt-5">
+            <h1 className="text-center mb-4">High Scores</h1>
+            {error && <div className="alert alert-danger" role="alert">{error}</div>}
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {highScores.map((score, index) => (
-                        <li key={index}>{score.username}: {score.score}</li>
+                        <tr key={index}>
+                            <th scope="row">{index + 1}</th>
+                            <td>{score.username}</td>
+                            <td>{score.score}</td>
+                        </tr>
                     ))}
-                </ul>
-            ) : (
-                <p>No high scores available.</p>
-            )}
-            <button onClick={handleRestartQuiz}>Restart Quiz</button> 
+                </tbody>
+            </table>
+            <div className="text-center mt-4">
+                <button className="btn btn-primary" onClick={() => navigate('/')}>Take Quiz Again</button>
+            </div>
+            <br></br>
         </div>
     );
 }

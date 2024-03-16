@@ -9,6 +9,10 @@ A dynamic web application for users to take quizzes on JavaScript topics, built 
 - **GraphQL API**: Utilizes GraphQL for efficient data fetching and manipulation.
 - **Responsive Design**: Crafted to provide a seamless experience on both desktop and mobile devices.
 
+## Deployed App
+
+https://jsquiz-306434aa7ec8.herokuapp.com/
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
@@ -24,13 +28,13 @@ Follow these instructions to get a copy of the project up and running on your lo
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourgithubusername/javascript-quiz-app.git
+git clone https://github.com/kandekore/Javascript-Quiz.git
 ```
 
 2. Install NPM packages for the server:
 
 ```bash
-cd javascript-quiz-app/server
+cd Javascript-Quiz/server
 npm install
 ```
 
@@ -62,14 +66,6 @@ npm start
 
 Your app should now be running on [http://localhost:3000](http://localhost:3000).
 
-## Running Tests
-
-Explain how to run the automated tests for this system (if applicable).
-
-## Deployment
-
-Details on deploying the application can be adapted based on where and how you plan to deploy, for example on Heroku, Netlify, etc.
-
 ## Built With
 
 - [React.js](https://reactjs.org/) - The web framework used.
@@ -77,13 +73,7 @@ Details on deploying the application can be adapted based on where and how you p
 - [Express](https://expressjs.com/) - Backend framework.
 - [MongoDB](https://www.mongodb.com/) - Database used.
 
-## Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
 ## License
 
 This project is licensed under the MIT License
 
-
-Remember to replace placeholders (like `https://github.com/yourgithubusername/javascript-quiz-app.git` and `**Your Name**`) with your actual repository URL and your name. Also, if you have specific tests or deployment steps, don't forget to add those details in the respective sections.

@@ -32,6 +32,7 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  persistedQueries: false, 
 });
 
 async function startApolloServer() {

@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/yourDatabaseName'; // Update this line
+const mongoUri = process.env.MONGODB_URI || 'mongodb://0.0.0.0:27017/yourDatabaseName'; // Update this line
 console.log("MongoDB URI:", mongoUri);
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
@@ -79,5 +79,5 @@ app.get('/api/scores/highscores', async (req, res) => {
 });
 
 app.listen({ port }, () => {
-  console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
+  console.log(`🚀 Server ready at http://0.0.0.0:${port}${server.graphqlPath}`);
 });

@@ -64,7 +64,7 @@ cd ../client
 npm start
 ```
 
-Your app should now be running on [http://localhost:3000](http://localhost:3000).
+Your app should now be running on [http://0.0.0.0:3000](http://0.0.0.0:3000).
 
 ## Built With
 

@@ -18,7 +18,7 @@ function HighScores() {
             });
 
             try {
-                const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000'; // Dynamic API URL for GraphQL endpoint
+                const apiUrl = process.env.REACT_APP_API_URL || 'http://0.0.0.0:4000'; // Dynamic API URL for GraphQL endpoint
                 const response = await fetch(`${apiUrl}/graphql`, { 
                     method: 'POST',
                     headers: {

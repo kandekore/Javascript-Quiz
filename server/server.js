@@ -1,3 +1,8 @@
+// Import environment variables from .env file
+require('dotenv').config();
+
+console.log('Loaded MONGODB_URI:', process.env.MONGODB_URI);
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -6,8 +11,8 @@ const typeDefs = require('./schemas/typeDefs');
 const resolvers = require('./schemas/resolvers');
 const mongoose = require('mongoose');
 
-// Import environment variables from .env file
-require('dotenv').config();
+
+
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -19,7 +24,9 @@ app.use(express.json());
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/yourDatabaseName'; // Update this line
 console.log("MongoDB URI:", mongoUri);
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected...'))
+.then(() => {
+  console.log('Connected to MongoDB:', mongoose.connection.db.databaseName);
+})
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
 const server = new ApolloServer({

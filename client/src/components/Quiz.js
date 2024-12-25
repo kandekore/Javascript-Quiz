@@ -107,7 +107,7 @@
       console.log('Attempting to save score', score, 'for user', username);
 
     
-      const endpoint = 'https://jsquiz-306434aa7ec8.herokuapp.com/api/scores';
+      const endpoint = 'http://quiz.dokku.dadadns.uk/api/scores';
       const scoreData = { username, score };
 
       try {

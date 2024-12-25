@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 console.log('Loaded MONGODB_URI:', process.env.MONGODB_URI);
+console.log('Loaded MONGODB_URL:', process.env.MONGODB_URL);
 
 const express = require('express');
 const cors = require('cors');
@@ -21,7 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-const mongoUri = process.env.MONGODB_URI || 'mongodb://0.0.0.0:27017/yourDatabaseName'; // Update this line
+const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URL; // Update this line
 console.log("MongoDB URI:", mongoUri);
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {

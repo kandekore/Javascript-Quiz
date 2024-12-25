@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Question = require('./models/Questions'); 
 const questionsData = require('./seeds/questions.json');
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = process.env.MONGODB_URL;
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {

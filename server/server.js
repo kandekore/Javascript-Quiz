@@ -19,7 +19,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(cors({
-  origin: 'http://quiz.dokku.dadadns.uk',
+  origin: 'https://javascripttest.com/',
   credentials: true,
 }));
 app.use(express.json());

@@ -18,7 +18,7 @@ function HighScores() {
             });
 
             try {
-                const apiUrl = process.env.REACT_APP_GRAPHQL_URI || 'http://quiz.dokku.dadadns.uk/graphql';
+                const apiUrl = process.env.REACT_APP_GRAPHQL_URI || 'https://javascripttest.com/graphql';
                 const response = await fetch(`${apiUrl}/graphql`, { 
                     method: 'POST',
                     headers: {

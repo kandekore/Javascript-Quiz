@@ -107,7 +107,7 @@
       console.log('Attempting to save score', score, 'for user', username);
 
     
-      const endpoint = 'http://quiz.dokku.dadadns.uk/api/scores';
+      const endpoint = 'https://javascripttest.com/api/scores';
       const scoreData = { username, score };
 
       try {

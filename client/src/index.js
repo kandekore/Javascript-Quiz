@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_URI || 'http://quiz.dokku.dadadns.uk/graphql',
+  uri: process.env.REACT_APP_GRAPHQL_URI || 'https://javascripttest.com/graphql',
   cache: new InMemoryCache(),
 });
 

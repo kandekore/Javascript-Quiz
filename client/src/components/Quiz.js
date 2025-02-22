@@ -107,7 +107,7 @@
       console.log('Attempting to save score', score, 'for user', username);
 
     
-      const endpoint = 'https://jstest.uk/api/scores';
+      const endpoint = 'https://javascripttest.com/api/scores';
       const scoreData = { username, score };
 
       try {
@@ -138,40 +138,76 @@
       }
   };
 
-  if (loading) return <p>Loading questions...</p>;
-  if (error) return <p>Error loading questions!</p>;
-  
-  // Guard: If quiz has started but questions are not yet loaded, show a fallback message.
-  if (isQuizStarted && questions.length === 0) {
-    return <p>Loading questions...</p>;
-  }
-  
-  return (
-    <div className='content'>
-      {isQuizStarted ? (
-        <>
-          <div className="countdown-grid">
-            <h2>Time Left: {timeLeft} seconds</h2>
+    if (loading) return <p>Loading questions...</p>;
+    if (error) return <p>Error loading questions!</p>;
+
+    if (isQuizStarted && questions.length === 0) {
+      return <p>Loading questions...</p>;
+    }
+
+    return (
+      <div className='content'>
+      
+      {!isQuizStarted && !reviewMode && (
+      <div className="welcome-text">
+        <h2>Welcome to the Ultimate JavaScript Quiz!</h2>
+        <strong>What you need to know:</strong> 
+
+<ol><li>Face a mix of questions covering a wide range of JavaScript topics.</li>
+<li>Keep an eye on the timer! You've got limited time to prove your expertise.</li>
+<li>Wrong answers? They come with a twist – a 10-second penalty to keep you on your toes.</li>
+<li>Correct answers boost your score, and detailed explanations help you learn as you go.</li></ol>
+        <p>Test your skills and challenge yourself. Press the <strong>Start Quiz</strong> button when you're ready!</p>
+      
+      </div>
+    )}
+
+    {isQuizStarted ? (
+      <>
+        <div className="countdown-grid">
+          <h2>Time Left: {timeLeft} seconds</h2>
+        </div>
+        <div id="question-container">
+          {/* Now it's safe to assume questions[currentQuestionIndex] exists */}
+          <div id="question">{questions[currentQuestionIndex].question}</div>
+          <div id="answer-buttons" className="btn-grid">
+            {questions[currentQuestionIndex].answers.map((answer, index) => (
+              <button key={index} className="btn" onClick={() => handleAnswer(answer)}>
+                {answer.text}
+              </button>
+            ))}
           </div>
-          <div id="question-container">
-            {/* Now it's safe to assume questions[currentQuestionIndex] exists */}
-            <div id="question">{questions[currentQuestionIndex].question}</div>
-            <div id="answer-buttons" className="btn-grid">
-              {questions[currentQuestionIndex].answers.map((answer, index) => (
-                <button key={index} className="btn" onClick={() => handleAnswer(answer)}>
-                  {answer.text}
-                </button>
-              ))}
+        </div>
+      </>
+    ) : reviewMode ? (
+          <div>
+            <h2>Your Score: {score}</h2>
+            <div>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <button className="save" onClick={saveScore}>Save Score</button>
             </div>
+            <h3>Review Answers</h3>
+            {selectedAnswers.map((item, index) => (
+              <div key={index}>
+                <p><strong>Question:</strong> {item.question}</p>
+                <p><strong>Your answer:</strong> {item.selectedAnswer} {item.correct ? '✅' : '❌'}</p>
+                {!item.correct && <p><i><strong>Explanation:</strong> {item.explanation}</i></p>
+              
+                }{ <p className='break'> ---- </p>}
+              </div>
+            ))}
+            <button className="btn" onClick={startQuiz}>Restart Quiz</button>
           </div>
-        </>
-      ) : reviewMode ? (
-        // Review mode UI
-        <div>...Review Answers...</div>
-      ) : (
-        <button className="btn start" onClick={startQuiz}>Start Quiz</button>
-      )}
-    </div>
-  );
-      }  
+        ) : (
+          <button className="btn start" onClick={startQuiz}>Start Quiz</button>
+        )}
+      </div>
+    );
+  }
+
   export default Quiz;

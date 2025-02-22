@@ -17,7 +17,7 @@ const port = process.env.SERVER_PORT || 4001;
 
 // Define CORS options
 const corsOptions = {
-  origin: "https://jstest.dadadns.uk", // Or use "*" to allow all origins
+  origin: "https://javascripttest.com", // Or use "*" to allow all origins
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true

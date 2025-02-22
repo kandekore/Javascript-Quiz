@@ -25,12 +25,12 @@ app.use(cors({
 app.use(express.json());
 
 // Connect to MongoDB
-const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URL; // Update this line
+const mongoUri = process.env.MONGODB_URI || process.env.MONGODB_URL; // updated fallback
 console.log("MongoDB URI:", mongoUri);
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => {
-  console.log('Connected to MongoDB:', mongoose.connection.db.databaseName);
-})
+  .then(() => {
+    console.log('Connected to MongoDB:', mongoose.connection.db.databaseName);
+  })
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
 const server = new ApolloServer({

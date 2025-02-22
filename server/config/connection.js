@@ -1,8 +1,8 @@
 require('dotenv').config(); // Load environment variables
 const { connect, connection } = require("mongoose");
 
-// Use the environment variable or provide a default for development
-const mongoDBUri = process.env.MONGODB_URI || process.env.MONGO_URL; 
+const mongoDBUri = process.env.MONGODB_URI || process.env.MONGODB_URL; 
+// now it checks for MONGODB_URL correctly
 
 connect(mongoDBUri, {
   useNewUrlParser: true,

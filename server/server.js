@@ -41,16 +41,25 @@ const server = new ApolloServer({
 
 async function startApolloServer() {
   await server.start();
-  server.applyMiddleware({ app });
+  server.applyMiddleware({
+    app,
+    cors: {
+      origin: "https://jstest.dadadns.uk", // or use "*" to allow all origins
+      methods: "GET,POST",
+      credentials: true,
+      allowedHeaders: ["Content-Type", "Authorization"],
+    }
+  });
 
   // Serve static files from the React app
   app.use(express.static(path.join(__dirname, '../client/build')));
 
-  // The "catchall" handler for any request that doesn't match one above, send back React's index.html file.
+  // Fallback for any other request: serve index.html
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
+
 
 startApolloServer();
 

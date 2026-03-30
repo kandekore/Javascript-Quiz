@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './css/HighScores.css';
 
 function HighScores() {
     const [highScores, setHighScores] = useState([]);
     const [error, setError] = useState('');
-    const navigate = useNavigate(); // Create navigate function
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchHighScores = async () => {
@@ -19,7 +20,7 @@ function HighScores() {
 
             try {
                 const apiUrl = process.env.REACT_APP_GRAPHQL_URI || 'https://javascripttest.com/graphql';
-                const response = await fetch(`${apiUrl}/graphql`, { 
+                const response = await fetch(`${apiUrl}/graphql`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -46,32 +47,36 @@ function HighScores() {
         fetchHighScores();
     }, []);
 
+    const rankMedal = (index) => {
+        if (index === 0) return '🥇';
+        if (index === 1) return '🥈';
+        if (index === 2) return '🥉';
+        return null;
+    };
+
     return (
-        <div className="container mt-5">
-            <h1 className="text-center mb-4">High Scores</h1>
-            {error && <div className="alert alert-danger" role="alert">{error}</div>}
-            <table className="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {highScores.map((score, index) => (
-                        <tr key={index}>
-                            <th scope="row">{index + 1}</th>
-                            <td>{score.username}</td>
-                            <td>{score.score}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <div className="text-center mt-4">
-                <button className="btn btn-primary" onClick={() => navigate('/')}>Take Quiz Again</button>
+        <div className="leaderboard-container">
+            <div className="leaderboard-header">
+                <h1>Leaderboard</h1>
+                <p>Top JavaScript Quiz Scores</p>
             </div>
-            <br></br>
+            {error && <div className="alert alert-danger" role="alert">{error}</div>}
+            <div className="leaderboard-list">
+                {highScores.map((score, index) => (
+                    <div key={index} className={`leaderboard-row${index < 3 ? ` rank-${index + 1}` : ''}`}>
+                        <div className="rank-badge">
+                            {rankMedal(index) ? (
+                                <span className="rank-medal">{rankMedal(index)}</span>
+                            ) : (
+                                <span className="rank-number">{index + 1}</span>
+                            )}
+                        </div>
+                        <div className="rank-username">{score.username}</div>
+                        <div className="rank-score">{score.score}</div>
+                    </div>
+                ))}
+            </div>
+            <button className="btn-primary-action" onClick={() => navigate('/')}>Take Quiz Again</button>
         </div>
     );
 }

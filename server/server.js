@@ -7,6 +7,7 @@ console.log('Loaded MONGODB_URL:', process.env.MONGODB_URL);
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./schemas/typeDefs');
 const resolvers = require('./schemas/resolvers');
@@ -17,7 +18,7 @@ const port = process.env.SERVER_PORT || 4001;
 
 // Define CORS options
 const corsOptions = {
-  origin: "https://javascripttest.com", // Or use "*" to allow all origins
+  origin: "https://javascripttest.com",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
@@ -29,6 +30,15 @@ app.options('*', cors(corsOptions));
 
 // Use JSON parsing middleware
 app.use(express.json());
+
+// Rate limiter for score submission endpoint (5 per IP per 15 minutes)
+const scoreSubmitLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  message: { error: 'Too many score submissions. Please try again in 15 minutes.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // Connect to MongoDB
 const mongoUri = process.env.MONGODB_URI || process.env.MONGODB_URL;
@@ -43,13 +53,16 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   persistedQueries: false,
+  context: ({ req }) => ({
+    clientIp: (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress,
+  }),
 });
 
 async function startApolloServer() {
   await server.start();
   server.applyMiddleware({
     app,
-    cors: corsOptions // Use the same CORS options for Apollo middleware
+    cors: corsOptions
   });
 
   // Serve static files from the React app build directory
@@ -66,12 +79,15 @@ startApolloServer();
 const Score = require('./models/Scores');
 
 // POST endpoint to save a score
-app.post('/api/scores', async (req, res) => {
-  if (!req.body.username || req.body.score == null) {
-    return res.status(400).json({ error: 'Missing username or score' });
+app.post('/api/scores', scoreSubmitLimiter, async (req, res) => {
+  const username = String(req.body.username || '').trim().slice(0, 30);
+  const score = Number(req.body.score);
+
+  if (!username || isNaN(score) || score < 0 || score > 100) {
+    return res.status(400).json({ error: 'Invalid username or score' });
   }
+
   try {
-    const { username, score } = req.body;
     const newScore = new Score({ username, score });
     await newScore.save();
     res.status(201).json({ message: 'Score saved successfully' });

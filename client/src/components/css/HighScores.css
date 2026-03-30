@@ -1,0 +1,139 @@
+/* =============================================
+   LEADERBOARD / HIGH SCORES
+   ============================================= */
+
+.leaderboard-container {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+}
+
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.leaderboard-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f7df1c;
+  margin: 0 0 6px;
+}
+
+.leaderboard-header p {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.leaderboard-list {
+  margin-bottom: 36px;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-left: 4px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 8px;
+  transition: border-color 0.2s;
+}
+
+.leaderboard-row:hover {
+  border-color: #444;
+  border-left-color: #444;
+}
+
+/* Gold, silver, bronze treatment */
+.rank-1 {
+  border-left-color: #ffd700;
+  background: linear-gradient(135deg, #1e1a00 0%, #1a1a1a 60%);
+}
+
+.rank-2 {
+  border-left-color: #c0c0c0;
+  background: linear-gradient(135deg, #181818 0%, #1a1a1a 60%);
+}
+
+.rank-3 {
+  border-left-color: #cd7f32;
+  background: linear-gradient(135deg, #1a1000 0%, #1a1a1a 60%);
+}
+
+.rank-badge {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rank-medal {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.rank-number {
+  background: #2a2a2a;
+  color: #777;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Gotham Rounded', sans-serif;
+}
+
+.rank-username {
+  flex: 1;
+  font-size: 1rem;
+  color: #ddd;
+  font-weight: 500;
+}
+
+.rank-score {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f7df1c;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Reuse the shared primary button from Quiz.css */
+.btn-primary-action {
+  background: #f7df1c;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 44px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Gotham Rounded', sans-serif;
+  transition: background 0.2s ease, transform 0.15s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-primary-action:hover {
+  background: #e5cc10;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .leaderboard-container {
+    padding: 0 12px 40px;
+  }
+
+  .leaderboard-row {
+    padding: 14px 14px;
+  }
+}

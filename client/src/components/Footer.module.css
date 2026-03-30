@@ -1,16 +1,14 @@
 
 .footer {
-  background-color: #000!important; 
-  color: white; 
+  background-color: #000000 !important;
+  color: white;
 }
 .mern {
   width: 260px;
   padding: 10px;
 }
 .bg-dark {
-
-  background-color: #000!important;
-  
+  background-color: #000000 !important;
 }
 
 html, body {
@@ -29,4 +27,3 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-

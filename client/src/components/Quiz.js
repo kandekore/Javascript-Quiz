@@ -245,9 +245,7 @@ function Quiz({ onQuizComplete }) {
           </div>
           <button className="btn-primary-action" onClick={startQuiz}>Restart Quiz</button>
         </div>
-      ) : (
-        <button className="btn-primary-action" onClick={startQuiz}>Start Quiz</button>
-      )}
+      ) : null}
     </div>
   );
 }

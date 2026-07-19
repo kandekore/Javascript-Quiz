@@ -1,11 +1,9 @@
 // Import environment variables from .env file
 require('dotenv').config();
 
-console.log('Loaded MONGODB_URI:', process.env.MONGODB_URI);
-console.log('Loaded MONGODB_URL:', process.env.MONGODB_URL);
-
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 const { ApolloServer } = require('apollo-server-express');
@@ -25,6 +23,7 @@ const corsOptions = {
 };
 
 // Apply global CORS middleware for all routes and preflight requests
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
@@ -42,16 +41,16 @@ const scoreSubmitLimiter = rateLimit({
 
 // Connect to MongoDB
 const mongoUri = process.env.MONGODB_URI || process.env.MONGODB_URL;
-console.log("MongoDB URI:", mongoUri);
 mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('Connected to MongoDB:', mongoose.connection.db.databaseName);
+    console.log('Connected to MongoDB');
   })
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  introspection: false,
   persistedQueries: false,
   context: ({ req }) => ({
     clientIp: (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress,
